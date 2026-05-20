@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Lexend } from "next/font/google";
 
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
-import { Toaster } from "@/components/figma/Toast";
 
 import { cn } from "@/lib/utils";
 
@@ -51,8 +50,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   title: {
-    default: "[Brand Name] Design System",
-    template: "%s | [Brand Name] DS",
+    default: "EYWorks Design System",
+    template: "%s | EYWorks DS",
   },
   description:
     "A collection of reusable components, design tokens, and guidelines for building consistent, accessible UIs.",
@@ -60,14 +59,14 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    title: "[Brand Name] Design System",
+    title: "EYWorks Design System",
     description:
       "A collection of reusable components, design tokens, and guidelines for building consistent, accessible UIs.",
-    siteName: "[Brand Name] Design System",
+    siteName: "EYWorks Design System",
   },
   twitter: {
     card: "summary_large_image",
-    title: "[Brand Name] Design System",
+    title: "EYWorks Design System",
     description:
       "A collection of reusable components, design tokens, and guidelines for building consistent, accessible UIs.",
   },
@@ -103,7 +102,6 @@ const RootLayout = ({
       </head>
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <ThemeProvider>{children}</ThemeProvider>
-        <Toaster position="bottom-right" />
       </body>
     </html>
   );

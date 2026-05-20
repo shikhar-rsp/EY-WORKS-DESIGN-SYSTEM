@@ -10,10 +10,6 @@ import Navbar from "@/components/sections/landing/Navbar";
 import SidebarContent from "@/components/sections/landing/SidebarContent";
 
 import { Button } from "@/components/figma/Button";
-import { FormDemoCard } from "@/components/fragments/cards/FormDemoCard";
-import { InputStatesCard } from "@/components/fragments/cards/InputStatesCard";
-import { FormControlsCard } from "@/components/fragments/cards/FormControlsCard";
-import { ComponentGridCard } from "@/components/fragments/cards/ComponentGridCard";
 
 import { COMPONENT_PAGE_ROUTE, INTRODUCTION_PAGE_ROUTE } from "@/config/page";
 
@@ -42,8 +38,8 @@ const HomePage = () => {
           <br className="hidden sm:inline" /> with production-ready components
         </h1>
         <p className="mx-auto mt-5 max-w-170 text-base leading-7 text-secondary-foreground sm:text-lg">
-          Open source components synced from Figma, styled with Tailwind CSS v4,
-          powered by design tokens. Copy. Paste. Own it.
+          Components synced from Figma, styled with Tailwind CSS v4, powered by
+          design tokens.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
           <Link href={INTRODUCTION_PAGE_ROUTE}>
@@ -60,23 +56,6 @@ const HomePage = () => {
               View Components
             </Button>
           </Link>
-        </div>
-      </section>
-
-      {/* ── Component Showcase ────────────────────────────────── */}
-      <section className="mx-auto max-w-[1200px] px-6 pb-20">
-        <div className="grid gap-6 md:grid-cols-2">
-          {/* Left column */}
-          <div className="space-y-6">
-            <FormDemoCard />
-            <InputStatesCard />
-          </div>
-
-          {/* Right column */}
-          <div className="space-y-6">
-            <ComponentGridCard />
-            <FormControlsCard />
-          </div>
         </div>
       </section>
 
@@ -122,7 +101,7 @@ const HomePage = () => {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-[1200px] items-center justify-between px-6 py-6">
           <p className="text-sm text-muted-foreground">
-            [Brand Name] Design System
+            EYWorks Design System
           </p>
           <nav className="flex items-center gap-4">
             <Link

@@ -138,7 +138,7 @@ const ColorPage = async () => {
     <div className="mx-auto max-w-3xl px-8 py-10 font-lexend">
       <h1 className="text-4xl font-bold tracking-tight text-foreground">Color</h1>
       <p className="mt-2 text-base text-muted-foreground">
-        Color communicates meaning and reinforces hierarchy across the design system. [Brand Name] DS uses a
+        Color communicates meaning and reinforces hierarchy across the design system. EYWorks DS uses a
         semantic token system where every color has a defined role — no raw hex values in
         component code.
       </p>
@@ -255,14 +255,14 @@ const ColorPage = async () => {
         Color Roles
       </h2>
       <p className="mt-3 text-sm text-muted-foreground">
-        Every color in [Brand Name] DS belongs to a semantic role. Always select a color by its role — what
+        Every color in EYWorks DS belongs to a semantic role. Always select a color by its role — what
         it communicates — not by its appearance. Using the wrong role sends the wrong signal to
         users.
       </p>
       <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
         <RoleCard
           role="Brand / Primary"
-          description="The [Brand Name] brand color. Used for primary actions, active states, and selected indicators."
+          description="The EYWorks brand color. Used for primary actions, active states, and selected indicators."
           tokens={["bg-primary", "text-primary", "border-primary"]}
           accentClass="bg-primary"
         />
@@ -341,7 +341,7 @@ const ColorPage = async () => {
       {/* Primary */}
       <ColorGroup
         title="Primary"
-        description="The [Brand Name] brand color and its interaction states."
+        description="The EYWorks brand color and its interaction states."
         tokens={[
           { token: "--primary" },
           { token: "--primary-hover" },

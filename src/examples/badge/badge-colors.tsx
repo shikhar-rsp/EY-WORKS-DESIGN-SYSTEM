@@ -1,23 +1,28 @@
 import { Badge, BadgeIndicator } from "@/components/figma/Badge";
-import { Avatar, AvatarFallback } from "@/components/figma/Avatar";
+
+const AvatarStub = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex size-9 items-center justify-center rounded-full bg-muted text-xs font-medium text-foreground">
+    {children}
+  </span>
+);
 
 export const BadgeColors = () => (
   <div style={{ display: "flex", gap: "24px", alignItems: "center" }}>
     <Badge>
       <BadgeIndicator count={3} color="danger" />
-      <Avatar><AvatarFallback>D</AvatarFallback></Avatar>
+      <AvatarStub>D</AvatarStub>
     </Badge>
     <Badge>
       <BadgeIndicator count={3} color="primary" />
-      <Avatar><AvatarFallback>P</AvatarFallback></Avatar>
+      <AvatarStub>P</AvatarStub>
     </Badge>
     <Badge>
       <BadgeIndicator count={3} color="success" />
-      <Avatar><AvatarFallback>S</AvatarFallback></Avatar>
+      <AvatarStub>S</AvatarStub>
     </Badge>
     <Badge>
       <BadgeIndicator count={3} color="warning" />
-      <Avatar><AvatarFallback>W</AvatarFallback></Avatar>
+      <AvatarStub>W</AvatarStub>
     </Badge>
   </div>
 );

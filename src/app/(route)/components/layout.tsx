@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     "Browse all components — buttons, inputs, toggles, checkboxes, and more. Each component includes live previews, API references, and copy-ready code.",
   openGraph: {
-    title: "Components | [Brand Name] Design System",
+    title: "Components | EYWorks Design System",
     description:
       "Browse all components — buttons, inputs, toggles, checkboxes, and more.",
   },
   twitter: {
-    title: "Components | [Brand Name] Design System",
+    title: "Components | EYWorks Design System",
     description:
       "Browse all components — buttons, inputs, toggles, checkboxes, and more.",
   },

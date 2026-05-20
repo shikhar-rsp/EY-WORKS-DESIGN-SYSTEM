@@ -42,7 +42,7 @@ const IconographyPage = async () => {
       <h1 className="text-4xl font-bold tracking-tight text-foreground">Iconography</h1>
       <p className="mt-2 text-base text-muted-foreground">
         Icons are symbols designed to represent concepts or features. This page covers the design
-        principles, visual style, and rules for using and creating icons in [Brand Name] DS.
+        principles, visual style, and rules for using and creating icons in EYWorks DS.
       </p>
 
       {/* Principles */}
@@ -79,7 +79,7 @@ const IconographyPage = async () => {
         Visual Style
       </h2>
       <p className="mt-3 text-sm text-muted-foreground">
-        All icons in [Brand Name] DS follow a consistent geometric style derived from the Huge Icon Set v2.0.
+        All icons in EYWorks DS follow a consistent geometric style derived from the Huge Icon Set v2.0.
       </p>
       <div className="mt-4 rounded-large border border-border bg-muted">
         <table className="w-full text-sm">

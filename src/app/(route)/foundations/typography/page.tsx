@@ -116,7 +116,7 @@ const TypographyPage = async () => {
     <div className="mx-auto max-w-3xl px-8 py-10 font-lexend">
       <h1 className="text-4xl font-bold tracking-tight text-foreground">Typography</h1>
       <p className="mt-2 text-base text-muted-foreground">
-        [Brand Name] DS uses three font families — Lexend, Geist Sans, and Geist Mono — each with a distinct
+        EYWorks DS uses three font families — Lexend, Geist Sans, and Geist Mono — each with a distinct
         role. This page documents the type scale, weights, and usage guidelines that keep the
         design system consistent and readable.
       </p>

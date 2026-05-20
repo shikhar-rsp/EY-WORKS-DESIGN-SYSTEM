@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     "A collection of reusable components, design tokens, and guidelines for building consistent, accessible UIs.",
   openGraph: {
-    title: "Introduction | [Brand Name] Design System",
+    title: "Introduction | EYWorks Design System",
     description:
       "A collection of reusable components, design tokens, and guidelines for building consistent, accessible UIs.",
   },
   twitter: {
-    title: "Introduction | [Brand Name] Design System",
+    title: "Introduction | EYWorks Design System",
     description:
       "A collection of reusable components, design tokens, and guidelines for building consistent, accessible UIs.",
   },
