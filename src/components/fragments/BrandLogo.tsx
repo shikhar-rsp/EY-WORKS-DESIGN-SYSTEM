@@ -2,51 +2,33 @@ import { cn } from "@/lib/utils";
 
 interface IBrandLogoProps {
   className?: string;
+  /** When true, expose the full "ey works" lockup at sm+ breakpoints. When false, clip to the icon. */
   showText?: boolean;
+  /** Kept for backward compatibility — the PNG already includes the wordmark, so this prop is currently a no-op. */
   textClassName?: string;
 }
 
-export const BrandLogo = (props: IBrandLogoProps) => (
-  <>
+const LOGO_SRC = "/svg/logo/ey%20logo.png";
+
+export const BrandLogo = (props: IBrandLogoProps) => {
+  const showFull = props.showText ?? false;
+
+  return (
     <span
-      aria-label="EYWorks"
       role="img"
+      aria-label="EYWorks"
       className={cn(
-        "inline-flex size-6 shrink-0 items-center justify-center [&>svg]:size-full",
+        "inline-flex h-6 shrink-0 items-center overflow-hidden",
+        showFull ? "w-6 sm:w-auto" : "w-6",
         props.className,
       )}
     >
-      <svg
-        viewBox="0 0 32 32"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <rect width="32" height="32" rx="7" fill="#FFE600" />
-        <text
-          x="50%"
-          y="54%"
-          textAnchor="middle"
-          dominantBaseline="middle"
-          fill="#1A1A1A"
-          fontFamily="Geist, system-ui, sans-serif"
-          fontSize="18"
-          fontWeight="900"
-          fontStyle="italic"
-          letterSpacing="-0.5"
-        >
-          ey
-        </text>
-      </svg>
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={LOGO_SRC}
+        alt=""
+        className="h-full w-auto max-w-none object-left object-contain"
+      />
     </span>
-    {props.showText && (
-      <span
-        className={cn(
-          "text-sm font-semibold text-foreground",
-          props.textClassName,
-        )}
-      >
-        works
-      </span>
-    )}
-  </>
-);
+  );
+};

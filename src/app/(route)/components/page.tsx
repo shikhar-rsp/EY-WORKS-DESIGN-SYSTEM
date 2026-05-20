@@ -10,9 +10,9 @@ const ComponentsPage = () => {
       <section className="flex flex-col gap-3 w-full h-fit">
         <h1 className="text-4xl font-bold text-foreground">Components</h1>
         <p className="text-sm text-secondary-foreground">
-          All the components available in the [Brand Name] DS library. Each component is
-          synced from the Figma master file with full variant, state, and token
-          coverage.
+          All the components available in the EYWorks DS library. Each component
+          is synced from the Figma master file with full variant, state, and
+          token coverage.
         </p>
       </section>
       <ul className="space-y-0 grid grid-cols-2 auto-rows-fr gap-5 sm:grid-cols-3 lg:gap-6">
@@ -20,17 +20,14 @@ const ComponentsPage = () => {
           <li key={colIndex} className="w-full h-fit">
             <Link
               href={component.href}
-              className="flex items-center gap-2 size-fit text-sm text-foreground underline-offset-4 decoration-foreground transition-all duration-100 hover:underline"
+              className="flex h-full w-full flex-col items-start justify-between gap-3 rounded-large border border-border bg-background p-5 transition-colors hover:border-border-hover hover:bg-muted"
             >
-              {component.name}
-              {component.status === "new" && (
-                <span className="rounded-full bg-primary px-1.5 py-0.5 text-[10px] font-medium text-primary-foreground">
-                  New
-                </span>
-              )}
-              {component.status === "updated" && (
-                <span className="size-1.5 rounded-full bg-info-bold" />
-              )}
+              <span className="text-sm font-semibold text-foreground">
+                {component.name}
+              </span>
+              <span className="text-xs text-muted-foreground">
+                View documentation →
+              </span>
             </Link>
           </li>
         ))}

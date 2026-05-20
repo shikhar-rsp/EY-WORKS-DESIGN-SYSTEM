@@ -9,12 +9,12 @@ export const metadata: Metadata = {
   description:
     "Design foundations — icons, iconography, typography, colors, and spacing tokens that power the component library.",
   openGraph: {
-    title: "Foundations | [Brand Name] Design System",
+    title: "Foundations | EYWorks Design System",
     description:
       "Design foundations — icons, iconography, typography, colors, and spacing tokens that power the component library.",
   },
   twitter: {
-    title: "Foundations | [Brand Name] Design System",
+    title: "Foundations | EYWorks Design System",
     description:
       "Design foundations — icons, iconography, typography, colors, and spacing tokens that power the component library.",
   },

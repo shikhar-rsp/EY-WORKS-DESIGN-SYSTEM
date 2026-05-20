@@ -1,8 +1,14 @@
 "use client";
 
 import { Badge, BadgeIndicator } from "@/components/figma/Badge";
-import { Avatar, AvatarFallback } from "@/components/figma/Avatar";
 import { Button } from "@/components/figma/Button";
+
+// Local avatar stub so this docs page doesn't depend on a removed Avatar component.
+const AvatarStub = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex size-9 items-center justify-center rounded-full bg-muted text-xs font-medium text-foreground">
+    {children}
+  </span>
+);
 
 export const BadgeDetail = () => {
   return (
@@ -16,7 +22,7 @@ export const BadgeDetail = () => {
         <div className="mt-4 rounded-large border border-border p-6 flex flex-wrap gap-8 items-center">
           <Badge>
             <BadgeIndicator count={5} />
-            <Avatar><AvatarFallback>JD</AvatarFallback></Avatar>
+            <AvatarStub>JD</AvatarStub>
           </Badge>
           <Badge>
             <BadgeIndicator variant="dot" />
@@ -24,7 +30,7 @@ export const BadgeDetail = () => {
           </Badge>
           <Badge>
             <BadgeIndicator count={120} max={99} />
-            <Avatar><AvatarFallback>AB</AvatarFallback></Avatar>
+            <AvatarStub>AB</AvatarStub>
           </Badge>
         </div>
       </div>
@@ -41,14 +47,14 @@ export const BadgeDetail = () => {
           <div className="flex flex-col items-center gap-2">
             <Badge>
               <BadgeIndicator variant="count" count={8} />
-              <Avatar><AvatarFallback>U1</AvatarFallback></Avatar>
+              <AvatarStub>U1</AvatarStub>
             </Badge>
             <span className="font-lexend text-xs text-muted-foreground">count</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Badge>
               <BadgeIndicator variant="dot" />
-              <Avatar><AvatarFallback>U2</AvatarFallback></Avatar>
+              <AvatarStub>U2</AvatarStub>
             </Badge>
             <span className="font-lexend text-xs text-muted-foreground">dot</span>
           </div>
@@ -68,7 +74,7 @@ export const BadgeDetail = () => {
             <div key={color} className="flex flex-col items-center gap-2">
               <Badge>
                 <BadgeIndicator count={3} color={color} />
-                <Avatar><AvatarFallback>{color[0].toUpperCase() + color[1]}</AvatarFallback></Avatar>
+                <AvatarStub>{color[0].toUpperCase() + color[1]}</AvatarStub>
               </Badge>
               <span className="font-lexend text-xs text-muted-foreground">{color}</span>
             </div>
@@ -89,7 +95,7 @@ export const BadgeDetail = () => {
             <div key={p} className="flex flex-col items-center gap-2">
               <Badge>
                 <BadgeIndicator variant="dot" placement={p} />
-                <Avatar><AvatarFallback>AB</AvatarFallback></Avatar>
+                <AvatarStub>AB</AvatarStub>
               </Badge>
               <span className="font-lexend text-xs text-muted-foreground">{p}</span>
             </div>
@@ -109,14 +115,14 @@ export const BadgeDetail = () => {
           <div className="flex flex-col items-center gap-2">
             <Badge>
               <BadgeIndicator count={150} max={99} />
-              <Avatar><AvatarFallback>99</AvatarFallback></Avatar>
+              <AvatarStub>99</AvatarStub>
             </Badge>
             <span className="font-lexend text-xs text-muted-foreground">count=150, max=99</span>
           </div>
           <div className="flex flex-col items-center gap-2">
             <Badge>
               <BadgeIndicator count={0} showZero />
-              <Avatar><AvatarFallback>Z0</AvatarFallback></Avatar>
+              <AvatarStub>Z0</AvatarStub>
             </Badge>
             <span className="font-lexend text-xs text-muted-foreground">count=0, showZero</span>
           </div>

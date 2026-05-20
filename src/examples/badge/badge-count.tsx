@@ -1,11 +1,14 @@
 import { Badge, BadgeIndicator } from "@/components/figma/Badge";
-import { Avatar, AvatarFallback } from "@/components/figma/Avatar";
+
+const AvatarStub = ({ children }: { children: React.ReactNode }) => (
+  <span className="inline-flex size-9 items-center justify-center rounded-full bg-muted text-xs font-medium text-foreground">
+    {children}
+  </span>
+);
 
 export const BadgeCount = () => (
   <Badge>
     <BadgeIndicator count={5} />
-    <Avatar>
-      <AvatarFallback>JD</AvatarFallback>
-    </Avatar>
+    <AvatarStub>JD</AvatarStub>
   </Badge>
 );

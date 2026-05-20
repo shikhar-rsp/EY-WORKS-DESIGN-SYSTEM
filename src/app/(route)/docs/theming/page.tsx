@@ -4,9 +4,9 @@ import { Tick02 } from "@/components/fragments/icons/catalog";
 import { CodeBlock } from "@/components/fragments/typography/CodeBlock";
 
 export const metadata: Metadata = {
-  title: "Theming | [Brand Name] DS",
+  title: "Theming | EYWorks DS",
   description:
-    "Learn how [Brand Name] DS uses CSS variables and Tailwind v4 to create a fully customizable semantic token system with automatic dark mode support.",
+    "Learn how EYWorks DS uses CSS variables and Tailwind v4 to create a fully customizable semantic token system with automatic dark mode support.",
 };
 
 // --- Interfaces ---
@@ -206,7 +206,7 @@ const ThemingPage = async () => {
     <div className="mx-auto max-w-3xl px-8 py-10 font-lexend">
       <h1 className="text-3xl font-bold tracking-tight text-foreground">Theming</h1>
       <p className="mt-2 leading-7 text-secondary-foreground">
-        [Brand Name] DS uses CSS custom properties (CSS variables) as a semantic token layer on top of Tailwind
+        EYWorks DS uses CSS custom properties (CSS variables) as a semantic token layer on top of Tailwind
         v4. Every color, radius, and font is a named token — no raw hex values live in component
         code. This makes the entire system swappable: change a token in{" "}
         <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-xs">globals.css</code> and
