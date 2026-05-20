@@ -1,0 +1,131 @@
+<div
+  style="
+    width: 100%;
+    min-width: 320px;
+    max-width: 512px;
+    padding: 24px;
+  "
+>
+  <div
+    id="accordion-gray"
+    style="
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      border-radius: var(--radius-large);
+      background: var(--accent-gray-subtle);
+    "
+  >
+    <!-- Header -->
+    <button
+      onclick="
+        var el = document.getElementById('accordion-gray');
+        var content = document.getElementById('accordion-gray-content');
+        var arrowDown = document.getElementById('accordion-gray-arrow-down');
+        var arrowUp = document.getElementById('accordion-gray-arrow-up');
+        if (content.style.display === 'none') {
+          content.style.display = 'block';
+          el.style.background = 'var(--background)';
+          el.style.gap = 'var(--space-150)';
+          el.style.paddingBottom = 'var(--space-250)';
+          arrowDown.style.display = 'none';
+          arrowUp.style.display = 'block';
+          this.style.borderRadius = 'var(--radius-large) var(--radius-large) 0 0';
+          this.style.boxShadow = '0px 0px 1px rgba(30,31,33,0.31), 0px 1px 1px rgba(30,31,33,0.25)';
+          this.style.background = 'var(--accent-gray-subtle)';
+        } else {
+          content.style.display = 'none';
+          el.style.background = 'var(--accent-gray-subtle)';
+          el.style.gap = '0';
+          el.style.paddingBottom = '0';
+          arrowDown.style.display = 'block';
+          arrowUp.style.display = 'none';
+          this.style.borderRadius = 'var(--radius-large)';
+          this.style.boxShadow = 'none';
+        }
+      "
+      style="
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--space-200) var(--space-300);
+        border-radius: var(--radius-large);
+        background: var(--accent-gray-subtle);
+        border: none;
+        cursor: pointer;
+        font-family: var(--font-lexend), sans-serif;
+      "
+      aria-expanded="false"
+    >
+      <span
+        style="
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 24px;
+          color: var(--foreground);
+        "
+      >
+        What is a design system?
+      </span>
+      <!-- Arrow Down -->
+      <svg
+        id="accordion-gray-arrow-down"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style="color: var(--foreground); flex-shrink: 0;"
+      >
+        <path
+          d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+      <!-- Arrow Up -->
+      <svg
+        id="accordion-gray-arrow-up"
+        width="32"
+        height="32"
+        viewBox="0 0 24 24"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        style="color: var(--foreground); flex-shrink: 0; display: none;"
+      >
+        <path
+          d="M18 15C18 15 13.5811 9.00001 12 9C10.4188 8.99999 6 15 6 15"
+          stroke="currentColor"
+          stroke-width="1.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </button>
+
+    <!-- Content -->
+    <div
+      id="accordion-gray-content"
+      style="
+        padding: 0 var(--space-200);
+        display: none;
+      "
+    >
+      <p
+        style="
+          font-family: var(--font-lexend), sans-serif;
+          font-size: 14px;
+          line-height: 20px;
+          color: var(--muted-foreground);
+          margin: 0;
+        "
+      >
+        A design system is a collection of reusable components, guided by clear
+        standards, that can be assembled to build any number of applications.
+      </p>
+    </div>
+  </div>
+</div>

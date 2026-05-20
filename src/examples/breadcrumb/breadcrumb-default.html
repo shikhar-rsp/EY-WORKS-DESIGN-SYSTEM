@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Breadcrumb Default</title>
+  <style>
+    nav ol {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      padding: 0; margin: 0;
+      list-style: none;
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 14px;
+    }
+    .bc-item { display: inline-flex; align-items: center; gap: 4px; }
+    .bc-link {
+      color: var(--muted-foreground);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+    .bc-link:hover { color: var(--foreground); }
+    .bc-sep {
+      display: flex; align-items: center;
+      color: var(--muted-foreground);
+      font-size: 12px;
+    }
+    .bc-page { color: var(--foreground); font-weight: 500; }
+  </style>
+</head>
+<body>
+  <nav aria-label="breadcrumb">
+    <ol>
+      <li class="bc-item">
+        <a class="bc-link" href="/">Home</a>
+      </li>
+      <li class="bc-sep" aria-hidden="true">›</li>
+      <li class="bc-item">
+        <a class="bc-link" href="/components">Components</a>
+      </li>
+      <li class="bc-sep" aria-hidden="true">›</li>
+      <li class="bc-item">
+        <span class="bc-page" aria-current="page">Breadcrumb</span>
+      </li>
+    </ol>
+  </nav>
+</body>
+</html>

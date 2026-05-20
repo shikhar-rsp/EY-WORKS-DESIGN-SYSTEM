@@ -1,0 +1,74 @@
+<div style="position: relative; height: 256px; width: 256px; padding: 32px 0;">
+  <div style="overflow: hidden; height: 100%;">
+    <div
+      id="carousel-vert-track"
+      style="
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        transition: transform 300ms ease-in-out;
+        transform: translateY(0%);
+      "
+    >
+      <div style="min-height: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-top: 16px;">
+        <div style="display: flex; height: 192px; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">1</div>
+      </div>
+      <div style="min-height: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-top: 16px;">
+        <div style="display: flex; height: 192px; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">2</div>
+      </div>
+      <div style="min-height: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-top: 16px;">
+        <div style="display: flex; height: 192px; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">3</div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    aria-label="Previous slide"
+    onclick="vertPrev()"
+    id="vert-prev-btn"
+    disabled
+    style="
+      position: absolute; top: -16px; left: 50%; transform: translateX(-50%) rotate(90deg);
+      display: flex; width: 32px; height: 32px; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid var(--border); background: var(--background);
+      color: var(--foreground); cursor: not-allowed; opacity: 0.5;
+    "
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+  </button>
+
+  <button
+    aria-label="Next slide"
+    onclick="vertNext()"
+    id="vert-next-btn"
+    style="
+      position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%) rotate(90deg);
+      display: flex; width: 32px; height: 32px; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid var(--border); background: var(--background);
+      color: var(--foreground); cursor: pointer;
+    "
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+  </button>
+</div>
+
+<script>
+  let vertIndex = 0;
+  const vertTotal = 3;
+  const vertTrack = document.getElementById('carousel-vert-track');
+  const vertPrevBtn = document.getElementById('vert-prev-btn');
+  const vertNextBtn = document.getElementById('vert-next-btn');
+
+  function updateVert() {
+    vertTrack.style.transform = `translateY(-${vertIndex * 100}%)`;
+    vertPrevBtn.disabled = vertIndex === 0;
+    vertPrevBtn.style.opacity = vertIndex === 0 ? '0.5' : '1';
+    vertPrevBtn.style.cursor = vertIndex === 0 ? 'not-allowed' : 'pointer';
+    vertNextBtn.disabled = vertIndex >= vertTotal - 1;
+    vertNextBtn.style.opacity = vertIndex >= vertTotal - 1 ? '0.5' : '1';
+    vertNextBtn.style.cursor = vertIndex >= vertTotal - 1 ? 'not-allowed' : 'pointer';
+  }
+
+  function vertPrev() { if (vertIndex > 0) { vertIndex--; updateVert(); } }
+  function vertNext() { if (vertIndex < vertTotal - 1) { vertIndex++; updateVert(); } }
+</script>

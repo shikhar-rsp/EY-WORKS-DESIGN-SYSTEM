@@ -1,0 +1,47 @@
+<!-- Input Group with Textarea -->
+<div
+  class="input-group"
+  role="group"
+  style="
+    display: flex;
+    flex-direction: column;
+    width: 256px;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--border-input);
+    background: var(--background);
+    transition: box-shadow 150ms, border-color 150ms;
+    outline: none;
+    overflow: hidden;
+  "
+>
+  <div
+    class="input-group-addon"
+    style="
+      display: flex;
+      align-items: center;
+      padding: 12px 12px 0;
+      color: var(--muted-foreground);
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+    "
+  >
+    Message
+  </div>
+  <textarea
+    rows="3"
+    placeholder="Write your message…"
+    style="
+      flex: 1;
+      min-width: 0;
+      resize: none;
+      background: transparent;
+      padding: 8px 12px 12px;
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 14px;
+      color: var(--foreground);
+      border: 0;
+      outline: none;
+    "
+  ></textarea>
+</div>

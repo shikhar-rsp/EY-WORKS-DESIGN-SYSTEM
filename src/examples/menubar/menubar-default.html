@@ -1,0 +1,117 @@
+<style>
+  .menubar {
+    display: inline-flex;
+    height: 36px;
+    align-items: center;
+    gap: var(--space-050);
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--border);
+    background: var(--background);
+    padding: 0 var(--space-050);
+  }
+  .menubar-trigger {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    border-radius: var(--radius-small);
+    padding: var(--space-050) var(--space-150);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--foreground);
+    background: transparent;
+    border: none;
+    outline: none;
+    user-select: none;
+  }
+  .menubar-trigger:hover, .menubar-trigger.active { background: var(--muted); }
+  .menubar-content {
+    position: fixed;
+    z-index: 50;
+    min-width: 12rem;
+    overflow: hidden;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--border);
+    background: var(--background);
+    padding: var(--space-050);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: none;
+  }
+  .menubar-content.open { display: block; }
+  .menubar-item {
+    display: flex;
+    width: 100%;
+    cursor: pointer;
+    align-items: center;
+    border-radius: var(--radius-small);
+    padding: var(--space-075) var(--space-150);
+    font-size: 14px;
+    color: var(--foreground);
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: left;
+  }
+  .menubar-item:hover { background: var(--muted); }
+  .menubar-item.destructive { color: var(--destructive); }
+  .menubar-item.destructive:hover { background: var(--destructive-subtle); }
+  .menubar-separator { margin: var(--space-050) calc(-1 * var(--space-050)); border-top: 1px solid var(--border); }
+</style>
+
+<div class="menubar" role="menubar">
+  <button class="menubar-trigger" onclick="toggleMenu('file', this)">File</button>
+  <div id="file" class="menubar-content">
+    <button class="menubar-item">New File</button>
+    <button class="menubar-item">Open…</button>
+    <hr class="menubar-separator" />
+    <button class="menubar-item">Save</button>
+    <hr class="menubar-separator" />
+    <button class="menubar-item destructive">Delete</button>
+  </div>
+
+  <button class="menubar-trigger" onclick="toggleMenu('edit', this)">Edit</button>
+  <div id="edit" class="menubar-content">
+    <button class="menubar-item">Undo</button>
+    <button class="menubar-item">Redo</button>
+    <hr class="menubar-separator" />
+    <button class="menubar-item">Cut</button>
+    <button class="menubar-item">Copy</button>
+    <button class="menubar-item">Paste</button>
+  </div>
+
+  <button class="menubar-trigger" onclick="toggleMenu('view', this)">View</button>
+  <div id="view" class="menubar-content">
+    <button class="menubar-item">Zoom In</button>
+    <button class="menubar-item">Zoom Out</button>
+    <button class="menubar-item">Reset Zoom</button>
+  </div>
+</div>
+
+<script>
+  let activeMenu = null;
+  function toggleMenu(id, trigger) {
+    const menu = document.getElementById(id);
+    const rect = trigger.getBoundingClientRect();
+    if (activeMenu && activeMenu !== id) {
+      document.getElementById(activeMenu).classList.remove('open');
+      document.querySelectorAll('.menubar-trigger').forEach(t => t.classList.remove('active'));
+    }
+    if (menu.classList.contains('open')) {
+      menu.classList.remove('open');
+      trigger.classList.remove('active');
+      activeMenu = null;
+    } else {
+      menu.style.top = rect.bottom + 4 + 'px';
+      menu.style.left = rect.left + 'px';
+      menu.classList.add('open');
+      trigger.classList.add('active');
+      activeMenu = id;
+    }
+  }
+  document.addEventListener('mousedown', e => {
+    if (!e.target.closest('.menubar')) {
+      document.querySelectorAll('.menubar-content').forEach(m => m.classList.remove('open'));
+      document.querySelectorAll('.menubar-trigger').forEach(t => t.classList.remove('active'));
+      activeMenu = null;
+    }
+  });
+</script>

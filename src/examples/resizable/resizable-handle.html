@@ -1,0 +1,70 @@
+<!-- Horizontal panel group with a visible grip handle -->
+<style>
+  .panel-group {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    max-width: 576px;
+    min-height: 200px;
+    overflow: hidden;
+    border-radius: var(--radius-large);
+    border: 1px solid var(--border);
+  }
+  .panel {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    overflow: auto;
+  }
+  .panel-label {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--secondary-foreground);
+    font-family: var(--font-lexend, sans-serif);
+  }
+  .resize-handle {
+    position: relative;
+    width: 1px;
+    flex-shrink: 0;
+    background: var(--border);
+    cursor: col-resize;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 150ms;
+  }
+  .resize-handle:hover {
+    background: var(--border-hover);
+  }
+  .grip {
+    position: absolute;
+    z-index: 10;
+    width: 12px;
+    height: 16px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-small);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+</style>
+
+<div class="panel-group">
+  <div class="panel">
+    <span class="panel-label">Panel One</span>
+  </div>
+  <div class="resize-handle">
+    <div class="grip">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="5" r="1"/><circle cx="9" cy="12" r="1"/><circle cx="9" cy="19" r="1"/>
+        <circle cx="15" cy="5" r="1"/><circle cx="15" cy="12" r="1"/><circle cx="15" cy="19" r="1"/>
+      </svg>
+    </div>
+  </div>
+  <div class="panel">
+    <span class="panel-label">Panel Two</span>
+  </div>
+</div>

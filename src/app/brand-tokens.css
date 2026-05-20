@@ -1,0 +1,438 @@
+/* ═══════════════════════════════════════════════════════════════════
+   BRAND TOKENS — single file modified per brand client.
+   ───────────────────────────────────────────────────────────────────
+   This file is the ONLY file a brand-porting workflow should edit.
+   Component code (src/components/**) and app routes are frozen.
+
+   Three blocks below:
+     1. :root           → light-mode raw values
+     2. .dark           → dark-mode overrides (must mirror :root keys)
+     3. @theme inline   → Tailwind v4 utility-class generation map
+
+   Color format: OKLCH (perceptually uniform). Hex is also valid but
+   discouraged for new tokens — convert with `npx tsx scripts/hex-to-oklch.ts`.
+   Validate with `npm run validate-tokens`.
+   ═══════════════════════════════════════════════════════════════════ */
+
+/* ─── Light Theme ───────────────────────────────────────────────── */
+
+:root {
+  /* Base */
+  --background: oklch(100.00% 0.0000 0.00);
+  --foreground: oklch(29.23% 0.0044 17.41);
+
+  /* Primary */
+  --primary: oklch(71.71% 0.1624 32.94);
+  --primary-hover: oklch(62.42% 0.1431 32.91);
+  --primary-active: oklch(52.74% 0.1234 33.39);
+  --primary-foreground: oklch(100.00% 0.0000 0.00);
+  --primary-subtle: oklch(93.86% 0.0295 30.64);
+  --primary-muted: oklch(87.80% 0.0600 31.09);
+  --primary-subtlest: oklch(97.74% 0.0111 31.07);
+
+  /* Secondary */
+  --secondary: oklch(96.72% 0.0000 0.00);
+  --secondary-hover: oklch(93.53% 0.0026 48.72);
+  --secondary-foreground: oklch(43.89% 0.0101 271.18);
+
+  /* Muted */
+  --muted: oklch(98.51% 0.0000 0.00);
+  --muted-hover: oklch(93.86% 0.0295 30.64);
+  --muted-active: oklch(79.98% 0.0069 28.84);
+  --muted-foreground: oklch(55.93% 0.0099 17.45);
+
+  /* Accent */
+  --accent-active: oklch(42.63% 0.1048 32.57);
+
+  /* Neutral */
+  --neutral: oklch(96.72% 0.0000 0.00);
+  --neutral-hover: oklch(93.53% 0.0026 48.72);
+
+  /* Destructive */
+  --destructive: oklch(53.08% 0.2178 29.23);
+  --destructive-hover: oklch(88.97% 0.0580 18.30);
+  --destructive-active: oklch(53.08% 0.2178 29.23);
+  --destructive-foreground: oklch(100.00% 0.0000 0.00);
+  --destructive-bold: oklch(62.80% 0.2577 29.23);
+  --destructive-subtle: oklch(94.30% 0.0286 17.67);
+  --destructive-accent: oklch(49.99% 0.1663 28.93);
+
+  /* Success */
+  --success: oklch(64.82% 0.1754 131.68);
+  --success-bold: oklch(53.22% 0.1405 131.59);
+  --success-active: oklch(89.72% 0.1786 126.67);
+  --success-foreground: oklch(100.00% 0.0000 0.00);
+
+  /* Warning */
+  --warning: oklch(66.58% 0.1574 58.32);
+  --warning-bold: oklch(83.69% 0.1644 84.43);
+
+  /* Info */
+  --info: oklch(55.39% 0.1617 257.89);
+  --info-bold: oklch(55.39% 0.1617 257.89);
+
+  /* Discovery */
+  --discovery: oklch(50.90% 0.1241 273.54);
+
+  /* Border */
+  --border: oklch(93.53% 0.0026 48.72);
+  --border-hover: oklch(79.98% 0.0069 28.84);
+  --border-input: oklch(72.86% 0.0093 17.37);
+  --border-selected: oklch(62.42% 0.1431 32.91);
+
+  /* Ring */
+  --ring: oklch(67.40% 0.1151 275.04);
+
+  /* Disabled */
+  --disabled: oklch(26.36% 0.0045 17.44 / 0.310);
+  --disabled-surface: oklch(100.00% 0.0000 0.00);
+  --disabled-border: oklch(26.36% 0.0045 17.44 / 0.141);
+
+  /* Placeholder */
+  --placeholder: oklch(82.74% 0.0011 17.18);
+
+  /* Subtlest / Subtle */
+  --subtlest: oklch(72.86% 0.0093 17.37);
+  --subtle: oklch(45.85% 0.0080 28.88);
+
+  /* Icon */
+  --icon-disabled: oklch(26.36% 0.0045 17.44 / 0.490);
+
+  /* Accent Palette */
+  --accent-lime-foreground: oklch(45.28% 0.1129 130.93);
+  --accent-purple: oklch(91.92% 0.0260 278.72);
+  --accent-orange: oklch(94.39% 0.0305 57.91);
+  --accent-magenta: oklch(93.02% 0.0320 341.80);
+  --accent-magenta-bold: oklch(57.26% 0.1469 344.83);
+  --accent-lime: oklch(96.69% 0.0659 122.33);
+  --accent-yellow: oklch(96.19% 0.0580 95.62);
+  --accent-blue: oklch(92.54% 0.0363 255.95);
+  --accent-teal: oklch(94.04% 0.0260 217.94);
+  --accent-teal-bold: oklch(60.66% 0.0943 224.12);
+  --accent-red: oklch(32.04% 0.1315 29.23);
+  --accent-red-bold: oklch(64.89% 0.2370 26.97);
+  --accent-red-subtlest: oklch(88.97% 0.0580 18.30);
+  --accent-blue-bold: oklch(71.00% 0.1527 257.21);
+  --accent-yellow-bold: oklch(87.90% 0.1534 91.61);
+  --accent-lime-bold: oklch(84.93% 0.2073 128.85);
+  --accent-green: oklch(95.05% 0.0507 163.05);
+  --accent-green-bold: oklch(59.88% 0.1243 160.28);
+  --accent-gray: oklch(68.05% 0.0012 17.19);
+  --accent-gray-subtle: oklch(82.74% 0.0011 17.18);
+  --accent-gray-subtlest: oklch(98.51% 0.0000 0.00);
+  --accent-gray-subtler: oklch(96.72% 0.0000 0.00);
+  --primary-subtle-pressed: oklch(82.05% 0.0939 32.16);
+  --success-subtle: oklch(96.69% 0.0659 122.33);
+  --discovery-bold: oklch(42.30% 0.1002 273.55);
+
+  /* Spacing (theme-agnostic — same in light & dark) */
+  --space-0: 0px;
+  --space-050: 4px;
+  --space-075: 6px;
+  --space-100: 8px;
+  --space-150: 12px;
+  --space-200: 16px;
+  --space-250: 20px;
+  --space-300: 24px;
+
+  /* Radius (theme-agnostic) */
+  --radius-xsmall: 2px;
+  --radius-small: 4px;
+  --radius-day: 6px;        /* small interactive cells (Calendar day buttons) */
+  --radius-medium: 8px;
+  --radius-card: 12px;      /* card surfaces (Sidebar nav-item, ProfileCard, Drawer) */
+  --radius-large: 16px;
+  --radius-full: 99px;
+
+  /* Shadows (theme-agnostic raw values; opacity carries the shade) */
+  --shadow-xs: 0 1px 2px 0 oklch(0% 0 0 / 0.05);
+  --shadow-sm: 0 1px 3px 0 oklch(0% 0 0 / 0.08), 0 1px 2px -1px oklch(0% 0 0 / 0.08);
+  --shadow-md: 0 4px 8px -2px oklch(0% 0 0 / 0.10), 0 2px 4px -2px oklch(0% 0 0 / 0.06);
+  --shadow-lg: 0 10px 16px -4px oklch(0% 0 0 / 0.12), 0 4px 8px -3px oklch(0% 0 0 / 0.08);
+  --shadow-xl: 0 20px 32px -6px oklch(0% 0 0 / 0.16), 0 8px 12px -4px oklch(0% 0 0 / 0.10);
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 200ms;
+  --duration-slow: 300ms;
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Typography (font-display = same as font-lexend by default — brand can split) */
+  --font-display: var(--font-lexend);
+
+  /* Brand gradient — used in Sidebar feature card; brand can override fully */
+  --brand-card-gradient: linear-gradient(
+    135deg,
+    var(--primary) 0%,
+    oklch(70.62% 0.1542 357.51) 50%,    /* fallback magenta */
+    oklch(72.13% 0.1339 296.51) 100%    /* fallback violet */
+  );
+}
+
+/* ─── Dark Theme ────────────────────────────────────────────────── */
+
+.dark {
+  /* Base */
+  --background: oklch(14.08% 0.0044 285.82);
+  --foreground: oklch(98.51% 0.0000 0.00);
+
+  /* Primary */
+  --primary: oklch(71.71% 0.1624 32.94);
+  --primary-hover: oklch(77.98% 0.1198 33.11);
+  --primary-active: oklch(62.42% 0.1431 32.91);
+  --primary-foreground: oklch(14.08% 0.0044 285.82);
+  --primary-subtle: oklch(22.39% 0.0360 34.23);
+  --primary-muted: oklch(22.39% 0.0360 34.23);
+  --primary-subtlest: oklch(19.92% 0.0223 28.91);
+
+  /* Secondary */
+  --secondary: oklch(27.39% 0.0055 286.03);
+  --secondary-hover: oklch(37.03% 0.0119 285.81);
+  --secondary-foreground: oklch(71.18% 0.0129 286.07);
+
+  /* Muted */
+  --muted: oklch(21.03% 0.0059 285.89);
+  --muted-hover: oklch(22.39% 0.0360 34.23);
+  --muted-active: oklch(37.03% 0.0119 285.81);
+  --muted-foreground: oklch(55.17% 0.0138 285.94);
+
+  /* Accent */
+  --accent-active: oklch(71.71% 0.1624 32.94);
+
+  /* Neutral */
+  --neutral: oklch(27.39% 0.0055 286.03);
+  --neutral-hover: oklch(37.03% 0.0119 285.81);
+
+  /* Destructive */
+  --destructive: oklch(63.68% 0.2078 25.33);
+  --destructive-hover: oklch(39.58% 0.1331 25.72);
+  --destructive-active: oklch(44.37% 0.1613 26.90);
+  --destructive-foreground: oklch(100.00% 0.0000 0.00);
+  --destructive-bold: oklch(63.68% 0.2078 25.33);
+  --destructive-subtle: oklch(25.75% 0.0886 26.04);
+  --destructive-accent: oklch(71.06% 0.1661 22.22);
+
+  /* Success */
+  --success: oklch(76.81% 0.2044 130.85);
+  --success-bold: oklch(64.82% 0.1754 131.68);
+  --success-active: oklch(40.50% 0.0956 131.06);
+  --success-foreground: oklch(100.00% 0.0000 0.00);
+
+  /* Warning */
+  --warning: oklch(76.86% 0.1647 70.08);
+  --warning-bold: oklch(87.90% 0.1534 91.61);
+
+  /* Info */
+  --info: oklch(71.37% 0.1434 254.62);
+  --info-bold: oklch(62.31% 0.1880 259.81);
+
+  /* Discovery */
+  --discovery: oklch(68.01% 0.1583 276.93);
+
+  /* Border */
+  --border: oklch(27.39% 0.0055 286.03);
+  --border-hover: oklch(37.03% 0.0119 285.81);
+  --border-input: oklch(37.03% 0.0119 285.81);
+  --border-selected: oklch(71.71% 0.1624 32.94);
+
+  /* Ring */
+  --ring: oklch(68.01% 0.1583 276.93);
+
+  /* Disabled */
+  --disabled: oklch(71.18% 0.0129 286.07 / 0.310);
+  --disabled-surface: oklch(21.03% 0.0059 285.89);
+  --disabled-border: oklch(44.19% 0.0146 285.79 / 0.251);
+
+  /* Placeholder */
+  --placeholder: oklch(44.19% 0.0146 285.79);
+
+  /* Subtlest / Subtle */
+  --subtlest: oklch(71.18% 0.0129 286.07);
+  --subtle: oklch(71.18% 0.0129 286.07);
+
+  /* Icon */
+  --icon-disabled: oklch(44.19% 0.0146 285.79 / 0.502);
+
+  /* Accent Palette */
+  --accent-lime-foreground: oklch(84.93% 0.2073 128.85);
+  --accent-purple: oklch(25.73% 0.0861 281.29);
+  --accent-orange: oklch(26.59% 0.0762 36.26);
+  --accent-magenta: oklch(27.71% 0.1052 349.14);
+  --accent-magenta-bold: oklch(66.68% 0.2591 322.15);
+  --accent-lime: oklch(27.41% 0.0688 132.11);
+  --accent-yellow: oklch(28.57% 0.0639 53.81);
+  --accent-blue: oklch(28.23% 0.0874 267.94);
+  --accent-teal: oklch(28.57% 0.0495 234.23);
+  --accent-teal-bold: oklch(79.71% 0.1339 211.53);
+  --accent-red: oklch(80.77% 0.1035 19.57);
+  --accent-red-bold: oklch(71.06% 0.1661 22.22);
+  --accent-red-subtlest: oklch(25.75% 0.0886 26.04);
+  --accent-blue-bold: oklch(62.31% 0.1880 259.81);
+  --accent-yellow-bold: oklch(76.86% 0.1647 70.08);
+  --accent-lime-bold: oklch(76.81% 0.2044 130.85);
+  --accent-green: oklch(37.80% 0.0730 168.94);
+  --accent-green-bold: oklch(72.27% 0.1920 149.58);
+  --accent-gray: oklch(44.19% 0.0146 285.79);
+  --accent-gray-subtle: oklch(37.03% 0.0119 285.81);
+  --accent-gray-subtlest: oklch(21.03% 0.0059 285.89);
+  --accent-gray-subtler: oklch(27.39% 0.0055 286.03);
+  --primary-subtle-pressed: oklch(30.18% 0.0660 32.24);
+  --success-subtle: oklch(27.41% 0.0688 132.11);
+  --discovery-bold: oklch(68.01% 0.1583 276.93);
+}
+
+/* ─── Tailwind v4 Theme — utility-class generation ──────────────── */
+
+@theme inline {
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-lexend: var(--font-lexend);
+  --font-display: var(--font-display);
+
+  /* Base */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  /* Primary */
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-active: var(--primary-active);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-muted: var(--primary-muted);
+  --color-primary-subtlest: var(--primary-subtlest);
+
+  /* Secondary */
+  --color-secondary: var(--secondary);
+  --color-secondary-hover: var(--secondary-hover);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  /* Muted */
+  --color-muted: var(--muted);
+  --color-muted-hover: var(--muted-hover);
+  --color-muted-active: var(--muted-active);
+  --color-muted-foreground: var(--muted-foreground);
+
+  /* Accent */
+  --color-accent-active: var(--accent-active);
+
+  /* Neutral */
+  --color-neutral: var(--neutral);
+  --color-neutral-hover: var(--neutral-hover);
+
+  /* Destructive */
+  --color-destructive: var(--destructive);
+  --color-destructive-hover: var(--destructive-hover);
+  --color-destructive-active: var(--destructive-active);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-destructive-bold: var(--destructive-bold);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-destructive-accent: var(--destructive-accent);
+
+  /* Success */
+  --color-success: var(--success);
+  --color-success-bold: var(--success-bold);
+  --color-success-active: var(--success-active);
+  --color-success-foreground: var(--success-foreground);
+
+  /* Warning */
+  --color-warning: var(--warning);
+  --color-warning-bold: var(--warning-bold);
+
+  /* Info */
+  --color-info: var(--info);
+  --color-info-bold: var(--info-bold);
+
+  /* Discovery */
+  --color-discovery: var(--discovery);
+
+  /* Border */
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-border-input: var(--border-input);
+  --color-border-selected: var(--border-selected);
+
+  /* Ring */
+  --color-ring: var(--ring);
+
+  /* Disabled */
+  --color-disabled: var(--disabled);
+  --color-disabled-surface: var(--disabled-surface);
+  --color-disabled-border: var(--disabled-border);
+
+  /* Placeholder */
+  --color-placeholder: var(--placeholder);
+
+  /* Subtlest / Subtle */
+  --color-subtlest: var(--subtlest);
+  --color-subtle: var(--subtle);
+
+  /* Icon */
+  --color-icon-disabled: var(--icon-disabled);
+
+  /* Accent Palette */
+  --color-accent-lime-foreground: var(--accent-lime-foreground);
+  --color-accent-purple: var(--accent-purple);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-magenta: var(--accent-magenta);
+  --color-accent-magenta-bold: var(--accent-magenta-bold);
+  --color-accent-lime: var(--accent-lime);
+  --color-accent-yellow: var(--accent-yellow);
+  --color-accent-blue: var(--accent-blue);
+  --color-accent-teal: var(--accent-teal);
+  --color-accent-teal-bold: var(--accent-teal-bold);
+  --color-accent-red: var(--accent-red);
+  --color-accent-red-bold: var(--accent-red-bold);
+  --color-accent-red-subtlest: var(--accent-red-subtlest);
+  --color-accent-blue-bold: var(--accent-blue-bold);
+  --color-accent-yellow-bold: var(--accent-yellow-bold);
+  --color-accent-lime-bold: var(--accent-lime-bold);
+  --color-accent-green: var(--accent-green);
+  --color-accent-green-bold: var(--accent-green-bold);
+  --color-accent-gray: var(--accent-gray);
+  --color-accent-gray-subtle: var(--accent-gray-subtle);
+  --color-accent-gray-subtlest: var(--accent-gray-subtlest);
+  --color-accent-gray-subtler: var(--accent-gray-subtler);
+  --color-primary-subtle-pressed: var(--primary-subtle-pressed);
+  --color-success-subtle: var(--success-subtle);
+  --color-discovery-bold: var(--discovery-bold);
+
+  /* Spacing */
+  --spacing-0: var(--space-0);
+  --spacing-050: var(--space-050);
+  --spacing-075: var(--space-075);
+  --spacing-100: var(--space-100);
+  --spacing-150: var(--space-150);
+  --spacing-200: var(--space-200);
+  --spacing-250: var(--space-250);
+  --spacing-300: var(--space-300);
+
+  /* Radius */
+  --radius-xsmall: var(--radius-xsmall);
+  --radius-small: var(--radius-small);
+  --radius-day: var(--radius-day);
+  --radius-medium: var(--radius-medium);
+  --radius-card: var(--radius-card);
+  --radius-large: var(--radius-large);
+  --radius-full: var(--radius-full);
+
+  /* Shadows */
+  --shadow-xs: var(--shadow-xs);
+  --shadow-sm: var(--shadow-sm);
+  --shadow-md: var(--shadow-md);
+  --shadow-lg: var(--shadow-lg);
+  --shadow-xl: var(--shadow-xl);
+
+  /* Motion */
+  --default-transition-duration: var(--duration-normal);
+  --default-transition-timing-function: var(--ease-out);
+  --duration-fast: var(--duration-fast);
+  --duration-normal: var(--duration-normal);
+  --duration-slow: var(--duration-slow);
+  --ease-out: var(--ease-out);
+  --ease-in: var(--ease-in);
+  --ease-in-out: var(--ease-in-out);
+}

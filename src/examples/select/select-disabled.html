@@ -1,0 +1,26 @@
+<!-- Disabled select trigger -->
+<style>
+  .select-trigger-disabled {
+    display: flex;
+    height: 36px;
+    width: 224px;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--disabled-border);
+    background: var(--disabled-surface);
+    padding: 0 var(--space-150);
+    color: var(--disabled);
+    cursor: not-allowed;
+    font-family: var(--font-lexend, sans-serif);
+    font-size: 14px;
+    opacity: 0.6;
+  }
+</style>
+
+<button class="select-trigger-disabled" disabled>
+  <span>Select an option</span>
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="opacity:0.5;flex-shrink:0">
+    <path d="m6 9 6 6 6-6"/>
+  </svg>
+</button>

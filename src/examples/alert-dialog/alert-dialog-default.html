@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlertDialog Default</title>
+  <style>
+    .overlay {
+      position: fixed; inset: 0; z-index: 50;
+      background: rgba(46,43,43,0.4);
+      backdrop-filter: blur(2px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dialog {
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-large);
+      padding: var(--space-300);
+      width: 100%; max-width: 480px;
+      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
+    }
+    .dialog-title {
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 18px; font-weight: 600;
+      color: var(--foreground); margin: 0 0 6px;
+    }
+    .dialog-desc {
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 14px; line-height: 1.6;
+      color: var(--muted-foreground); margin: 0 0 16px;
+    }
+    .footer { display: flex; justify-content: flex-end; gap: var(--space-150); }
+    .btn-cancel {
+      display: inline-flex; height: 36px; align-items: center;
+      padding: 0 var(--space-200);
+      border: 1px solid var(--border); border-radius: var(--radius-medium);
+      background: var(--background); color: var(--foreground);
+      font-family: var(--font-lexend), sans-serif; font-size: 14px;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-cancel:hover { background: var(--muted-hover); }
+    .btn-action {
+      display: inline-flex; height: 36px; align-items: center;
+      padding: 0 var(--space-200);
+      border: 1px solid transparent; border-radius: var(--radius-medium);
+      background: var(--primary); color: var(--primary-foreground);
+      font-family: var(--font-lexend), sans-serif; font-size: 14px;
+      cursor: pointer; transition: background 0.15s;
+    }
+    .btn-action:hover { background: var(--primary-hover); }
+    .btn-trigger {
+      display: inline-flex; height: 36px; align-items: center;
+      padding: 0 var(--space-200);
+      border: 1px solid transparent; border-radius: var(--radius-medium);
+      background: var(--primary); color: var(--primary-foreground);
+      font-family: var(--font-lexend), sans-serif; font-size: 14px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-trigger" onclick="document.getElementById('overlay').style.display='flex'">
+    Open Dialog
+  </button>
+
+  <div id="overlay" class="overlay" style="display:none">
+    <div class="dialog" role="alertdialog" aria-modal="true">
+      <div>
+        <h2 class="dialog-title">Are you absolutely sure?</h2>
+        <p class="dialog-desc">
+          This action cannot be undone. This will permanently delete your account
+          and remove your data from our servers.
+        </p>
+      </div>
+      <div class="footer">
+        <button class="btn-cancel" onclick="document.getElementById('overlay').style.display='none'">Cancel</button>
+        <button class="btn-action" onclick="document.getElementById('overlay').style.display='none'">Continue</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

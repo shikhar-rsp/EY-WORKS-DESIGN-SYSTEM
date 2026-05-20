@@ -1,0 +1,54 @@
+<style>
+  .tabs-list-gradient {
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    background: var(--muted);
+    width: 100%;
+  }
+  .tabs-trigger-gradient {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-size: 14px;
+    font-family: var(--font-lexend, sans-serif);
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: var(--muted-foreground);
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid transparent;
+    margin-bottom: -1px;
+    cursor: pointer;
+    transition: background 150ms, color 150ms;
+  }
+  .tabs-trigger-gradient:hover { background: var(--border); color: var(--foreground); }
+  .tabs-trigger-gradient[aria-selected="true"] {
+    background: var(--background);
+    color: var(--foreground);
+    font-weight: 600;
+    border-bottom-color: var(--primary);
+  }
+  .tabs-content-gradient { display: none; margin-top: 16px; font-size: 14px; color: var(--secondary-foreground); font-family: var(--font-lexend, sans-serif); }
+  .tabs-content-gradient.active { display: block; }
+</style>
+
+<div>
+  <div class="tabs-list-gradient" role="tablist">
+    <button class="tabs-trigger-gradient" role="tab" aria-selected="true" onclick="selectGrad(event,'overview')">Overview</button>
+    <button class="tabs-trigger-gradient" role="tab" aria-selected="false" onclick="selectGrad(event,'analytics')">Analytics</button>
+    <button class="tabs-trigger-gradient" role="tab" aria-selected="false" onclick="selectGrad(event,'reports')">Reports</button>
+  </div>
+  <div id="overview-g" class="tabs-content-gradient active">Overview content goes here.</div>
+  <div id="analytics-g" class="tabs-content-gradient">Analytics data goes here.</div>
+  <div id="reports-g" class="tabs-content-gradient">Reports content goes here.</div>
+</div>
+<script>
+function selectGrad(e, id) {
+  document.querySelectorAll('.tabs-trigger-gradient').forEach(t => t.setAttribute('aria-selected','false'));
+  document.querySelectorAll('.tabs-content-gradient').forEach(c => c.classList.remove('active'));
+  e.target.setAttribute('aria-selected','true');
+  document.getElementById(id+'-g').classList.add('active');
+}
+</script>

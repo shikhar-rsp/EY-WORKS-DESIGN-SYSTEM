@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body { font-family: 'Lexend', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: var(--background, #ffffff); }
+    .trigger { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 16px; background: var(--background, #ffffff); color: var(--primary, #f8785e); border: 1px solid var(--border, #ebe9e8); border-radius: var(--radius-medium, 8px); font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer; }
+    .trigger:hover { background: var(--muted-hover, #f4f2f1); border-color: var(--primary, #f8785e); }
+    .menu { display: none; position: fixed; z-index: 50; min-width: 128px; border-radius: var(--radius-large, 16px); border: 1px solid var(--border, #ebe9e8); background: var(--background, #ffffff); padding: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); font-family: inherit; }
+    .menu.open { display: block; }
+    .menu-label { padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--muted-foreground, #7a7272); }
+    .menu-separator { margin: 4px -4px; border-top: 1px solid var(--border, #ebe9e8); }
+    .menu-item { display: flex; align-items: center; width: 100%; padding: 6px 12px; font-size: 14px; color: var(--foreground, #2e2b2b); border-radius: 4px; border: none; background: transparent; cursor: pointer; text-align: left; gap: 12px; box-sizing: border-box; font-family: inherit; }
+    .menu-item:hover, .menu-item:focus { background: var(--muted, #fafafa); outline: none; }
+    .menu-item.destructive { color: var(--destructive, #cc0000); }
+    .menu-item.destructive:hover { background: var(--destructive-subtle, #ffe5e5); }
+    .shortcut { margin-left: auto; font-size: 12px; color: var(--muted-foreground, #7a7272); letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <div style="position: relative; display: inline-block;">
+    <button class="trigger" id="trigger">Open Menu</button>
+    <div class="menu" id="menu" role="menu">
+      <div class="menu-label">My Account</div>
+      <div class="menu-separator"></div>
+      <button class="menu-item" role="menuitem" onclick="closeMenu()">Profile <span class="shortcut">⇧⌘P</span></button>
+      <button class="menu-item" role="menuitem" onclick="closeMenu()">Settings <span class="shortcut">⌘S</span></button>
+      <div class="menu-separator"></div>
+      <button class="menu-item destructive" role="menuitem" onclick="closeMenu()">Log out <span class="shortcut">⇧⌘Q</span></button>
+    </div>
+  </div>
+  <script>
+    var trigger = document.getElementById('trigger');
+    var menu = document.getElementById('menu');
+    function openMenu() {
+      var r = trigger.getBoundingClientRect();
+      menu.style.top = (r.bottom + 4) + 'px';
+      menu.style.left = r.left + 'px';
+      menu.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+    function closeMenu() {
+      menu.classList.remove('open');
+      trigger.setAttribute('aria-expanded', 'false');
+      trigger.focus();
+    }
+    trigger.addEventListener('click', function() {
+      menu.classList.contains('open') ? closeMenu() : openMenu();
+    });
+    document.addEventListener('mousedown', function(e) {
+      if (!menu.contains(e.target) && e.target !== trigger) closeMenu();
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+  </script>
+</body>
+</html>

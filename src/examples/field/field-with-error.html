@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Field — With Error</title>
+  <style>
+    body { margin: 0; font-family: var(--font-lexend, 'Lexend', sans-serif); background: var(--background, #ffffff); }
+    :root {
+      --background: #ffffff; --foreground: #2e2b2b;
+      --destructive: #cc0000; --ring: #8290dd;
+      --radius-medium: 8px; --space-075: 6px; --space-200: 16px;
+    }
+    .field { display: flex; flex-direction: column; gap: var(--space-075); width: 256px; }
+    .field-label { font-size: 0.875rem; font-weight: 500; line-height: 1; color: var(--destructive); user-select: none; }
+    .field-input { height: 36px; width: 100%; border-radius: var(--radius-medium); border: 1px solid var(--destructive); background: var(--background); padding: 0 var(--space-200); font-size: 0.875rem; color: var(--foreground); outline: none; box-sizing: border-box; }
+    .field-input:focus { box-shadow: 0 0 0 2px color-mix(in srgb, var(--destructive) 30%, transparent); }
+    .field-error { font-size: 0.75rem; color: var(--destructive); }
+  </style>
+</head>
+<body>
+  <div class="field">
+    <label class="field-label" for="field-err-email">Email</label>
+    <input class="field-input" id="field-err-email" type="email" value="not-an-email" aria-invalid="true" />
+    <p class="field-error" role="alert" aria-live="polite">Please enter a valid email address.</p>
+  </div>
+</body>
+</html>

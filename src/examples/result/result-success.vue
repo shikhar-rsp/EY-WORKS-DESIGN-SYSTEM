@@ -1,0 +1,110 @@
+<script setup lang="ts">
+// Result — Success example
+</script>
+
+<template>
+  <div class="result" data-status="success">
+    <div class="result-icon-wrapper" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="currentColor" class="result-icon">
+        <path
+          fill-rule="evenodd"
+          d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm4.707 7.293a1 1 0 0 0-1.414 0L10 14.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l6-6a1 1 0 0 0 0-1.414z"
+          clip-rule="evenodd"
+        />
+      </svg>
+    </div>
+    <h3 class="result-title">Payment Successful</h3>
+    <p class="result-description">
+      Your order #12345 has been confirmed. A receipt has been sent to your email.
+    </p>
+    <div class="result-actions">
+      <button class="btn-primary">View Order</button>
+      <button class="btn-secondary">Back to Home</button>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+.result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 24px;
+  text-align: center;
+  font-family: var(--font-lexend, 'Lexend', sans-serif);
+}
+
+.result-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96px;
+  height: 96px;
+  border-radius: 9999px;
+  border: 1px solid rgba(101, 163, 13, 0.2);
+  background: rgba(101, 163, 13, 0.1);
+}
+
+.result-icon {
+  width: 64px;
+  height: 64px;
+  color: var(--success, #65a30d);
+}
+
+.result-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--foreground, #2e2b2b);
+  margin: 0;
+}
+
+.result-description {
+  max-width: 384px;
+  font-size: 14px;
+  line-height: 1.625;
+  color: var(--muted-foreground, #7a7272);
+  margin: 0;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: none;
+  background: var(--primary, #f8785e);
+  color: var(--primary-foreground, #ffffff);
+  font-family: var(--font-lexend, 'Lexend', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 36px;
+  padding: 0 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e5e7eb);
+  background: transparent;
+  color: var(--primary, #f8785e);
+  font-family: var(--font-lexend, 'Lexend', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+</style>

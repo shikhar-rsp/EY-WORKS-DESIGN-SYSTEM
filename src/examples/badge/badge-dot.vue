@@ -1,0 +1,21 @@
+<template>
+  <div :style="{ position: 'relative', display: 'inline-flex' }">
+    <!-- Dot indicator -->
+    <span :style="{
+      position: 'absolute',
+      zIndex: 10,
+      top: '-4px',
+      right: '-4px',
+      transform: 'translate(33%, -33%)',
+      width: '10px',
+      height: '10px',
+      borderRadius: '9999px',
+      background: 'var(--destructive, #cc0000)',
+      boxShadow: '0 0 0 2px var(--background, #ffffff)',
+    }"></span>
+    <!-- Bell icon -->
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" :style="{ color: 'var(--foreground, #2e2b2b)' }">
+      <path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </svg>
+  </div>
+</template>

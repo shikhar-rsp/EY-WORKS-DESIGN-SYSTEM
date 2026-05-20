@@ -1,0 +1,32 @@
+<div style="display: flex; flex-direction: column; gap: 8px;">
+  <label for="disabled-input" style="
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-050);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--foreground);
+    user-select: none;
+    opacity: 0.7;
+    cursor: not-allowed;
+  ">Disabled field</label>
+  <input
+    id="disabled-input"
+    type="text"
+    disabled
+    placeholder="Not available"
+    style="
+      height: 36px;
+      border-radius: var(--radius-medium);
+      border: 1px solid var(--border-input);
+      background: var(--background);
+      padding: 0 var(--space-200);
+      font-size: 14px;
+      color: var(--foreground);
+      opacity: 0.5;
+      cursor: not-allowed;
+      outline: none;
+    "
+  />
+</div>

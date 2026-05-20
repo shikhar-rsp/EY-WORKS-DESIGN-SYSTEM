@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Segmented — Sizes</title>
+    <style>
+      :root {
+        --muted: #fafafa;
+        --background: #ffffff;
+        --foreground: #2e2b2b;
+        --muted-foreground: #7a7272;
+        --border: #ebe9e8;
+        --radius-medium: 8px;
+        --radius-small: 4px;
+        --font-lexend: 'Lexend', sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 24px;
+        font-family: var(--font-lexend);
+        background: var(--background);
+      }
+
+      .size-group {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .size-label {
+        font-size: 12px;
+        color: var(--muted-foreground);
+      }
+
+      .segmented {
+        display: inline-flex;
+        align-items: center;
+        background: var(--muted);
+        border-radius: var(--radius-medium);
+        padding: 4px;
+        gap: 4px;
+      }
+
+      .segmented-sm { height: 32px; }
+      .segmented-default { height: 36px; }
+      .segmented-lg { height: 40px; }
+
+      .segmented-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        border-radius: var(--radius-small);
+        font-family: var(--font-lexend);
+        font-weight: 500;
+        cursor: pointer;
+        background: transparent;
+        color: var(--muted-foreground);
+        transition: all 150ms;
+      }
+
+      .segmented-item-sm { height: 24px; padding: 0 16px; font-size: 12px; }
+      .segmented-item-default { height: 28px; padding: 0 16px; font-size: 14px; }
+      .segmented-item-lg { height: 32px; padding: 0 24px; font-size: 14px; }
+
+      .segmented-item:hover {
+        color: var(--foreground);
+      }
+
+      .segmented-item[aria-selected="true"] {
+        background: var(--background);
+        color: var(--foreground);
+        font-weight: 600;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="size-group">
+      <div class="segmented segmented-sm" role="tablist">
+        <button class="segmented-item segmented-item-sm" role="tab" aria-selected="true">Day</button>
+        <button class="segmented-item segmented-item-sm" role="tab" aria-selected="false">Week</button>
+        <button class="segmented-item segmented-item-sm" role="tab" aria-selected="false">Month</button>
+      </div>
+      <span class="size-label">sm</span>
+    </div>
+
+    <div class="size-group">
+      <div class="segmented segmented-default" role="tablist">
+        <button class="segmented-item segmented-item-default" role="tab" aria-selected="true">Day</button>
+        <button class="segmented-item segmented-item-default" role="tab" aria-selected="false">Week</button>
+        <button class="segmented-item segmented-item-default" role="tab" aria-selected="false">Month</button>
+      </div>
+      <span class="size-label">default</span>
+    </div>
+
+    <div class="size-group">
+      <div class="segmented segmented-lg" role="tablist">
+        <button class="segmented-item segmented-item-lg" role="tab" aria-selected="true">Day</button>
+        <button class="segmented-item segmented-item-lg" role="tab" aria-selected="false">Week</button>
+        <button class="segmented-item segmented-item-lg" role="tab" aria-selected="false">Month</button>
+      </div>
+      <span class="size-label">lg</span>
+    </div>
+
+    <script>
+      document.querySelectorAll('[role="tablist"]').forEach((list) => {
+        const items = list.querySelectorAll('[role="tab"]');
+        items.forEach((item) => {
+          item.addEventListener('click', () => {
+            items.forEach((i) => i.setAttribute('aria-selected', 'false'));
+            item.setAttribute('aria-selected', 'true');
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

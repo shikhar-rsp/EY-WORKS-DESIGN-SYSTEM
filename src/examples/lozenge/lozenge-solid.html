@@ -1,0 +1,41 @@
+<style>
+  .loz {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    flex-shrink: 0;
+    height: 16px;
+    padding: 0 4px;
+    gap: 4px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    user-select: none;
+  }
+  /* solid backgrounds */
+  .loz--default  { background: var(--foreground, #2e2b2b); color: #ffffff; }
+  .loz--red      { background: var(--accent-red-bold, #ff3333); color: #ffffff; }
+  .loz--blue     { background: var(--accent-blue-bold, #60a2ff); color: #ffffff; }
+  .loz--yellow   { background: var(--accent-yellow-bold, #fcd34d); color: var(--foreground, #2e2b2b); }
+  .loz--lime     { background: var(--accent-lime-bold, #a3e635); color: var(--foreground, #2e2b2b); }
+  .loz--brand    { background: var(--primary, #f8785e); color: #ffffff; }
+  .loz--teal     { background: var(--accent-teal-bold, #358eac); color: #ffffff; }
+  .loz--magenta  { background: var(--accent-magenta-bold, #b24f8c); color: #ffffff; }
+  .loz--green    { background: var(--accent-green-bold, #229666); color: #ffffff; }
+  .loz--grey     { background: var(--secondary, #f4f4f4); color: var(--secondary-foreground, #505258); }
+</style>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px;">
+  <div class="loz loz--default">Default</div>
+  <div class="loz loz--red">Red</div>
+  <div class="loz loz--blue">Blue</div>
+  <div class="loz loz--yellow">Yellow</div>
+  <div class="loz loz--lime">Lime</div>
+  <div class="loz loz--brand">Brand</div>
+  <div class="loz loz--teal">Teal</div>
+  <div class="loz loz--magenta">Magenta</div>
+  <div class="loz loz--green">Green</div>
+  <div class="loz loz--grey">Grey</div>
+</div>

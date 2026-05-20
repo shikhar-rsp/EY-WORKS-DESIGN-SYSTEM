@@ -1,0 +1,33 @@
+<style>
+  .menubar { display: inline-flex; height: 36px; align-items: center; gap: var(--space-050); border-radius: var(--radius-medium); border: 1px solid var(--border); background: var(--background); padding: 0 var(--space-050); }
+  .menubar-trigger { cursor: pointer; border-radius: var(--radius-small); padding: var(--space-050) var(--space-150); font-size: 14px; font-weight: 500; color: var(--foreground); background: transparent; border: none; outline: none; }
+  .menubar-trigger:hover, .menubar-trigger.active { background: var(--muted); }
+  .menubar-content { position: fixed; z-index: 50; min-width: 12rem; border-radius: var(--radius-large); border: 1px solid var(--border); background: var(--background); padding: var(--space-050); box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: none; }
+  .menubar-content.open { display: block; }
+  .menubar-label { padding: var(--space-075) var(--space-150); font-size: 12px; font-weight: 600; color: var(--muted-foreground); }
+  .checkbox-item { display: flex; width: 100%; align-items: center; cursor: pointer; border-radius: var(--radius-small); padding: var(--space-075) var(--space-150) var(--space-075) 2rem; font-size: 14px; color: var(--foreground); background: transparent; border: none; outline: none; text-align: left; position: relative; }
+  .checkbox-item:hover { background: var(--muted); }
+  .checkbox-item.disabled { opacity: 0.5; pointer-events: none; }
+  .checkbox-icon { position: absolute; left: 12px; }
+  .menubar-separator { margin: var(--space-050) calc(-1 * var(--space-050)); border-top: 1px solid var(--border); }
+</style>
+
+<div class="menubar" role="menubar">
+  <button class="menubar-trigger" onclick="
+    const m = document.getElementById('view-cb');
+    const r = this.getBoundingClientRect();
+    if (m.classList.contains('open')) { m.classList.remove('open'); this.classList.remove('active'); }
+    else { m.style.top = r.bottom + 4 + 'px'; m.style.left = r.left + 'px'; m.classList.add('open'); this.classList.add('active'); }
+  ">View</button>
+  <div id="view-cb" class="menubar-content">
+    <div class="menubar-label">Interface</div>
+    <button class="checkbox-item" onclick="this.querySelector('.checkbox-icon').textContent = this.querySelector('.checkbox-icon').textContent ? '' : '✓'">
+      <span class="checkbox-icon">✓</span>Show Ruler
+    </button>
+    <button class="checkbox-item" onclick="this.querySelector('.checkbox-icon').textContent = this.querySelector('.checkbox-icon').textContent ? '' : '✓'">
+      <span class="checkbox-icon"></span>Show Grid
+    </button>
+    <hr class="menubar-separator" />
+    <button class="checkbox-item disabled"><span class="checkbox-icon"></span>Full Screen (disabled)</button>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Field — Default</title>
+  <style>
+    body { margin: 0; font-family: var(--font-lexend, 'Lexend', sans-serif); background: var(--background, #ffffff); color: var(--foreground, #2e2b2b); }
+    :root {
+      --background: #ffffff; --foreground: #2e2b2b;
+      --muted-foreground: #7a7272;
+      --border: #ebe9e8; --border-input: #ada5a5;
+      --placeholder: #c7c6c6; --ring: #8290dd;
+      --radius-medium: 8px; --space-075: 6px; --space-200: 16px;
+    }
+    .field { display: flex; flex-direction: column; gap: var(--space-075); width: 256px; }
+    .field-label { display: inline-flex; align-items: center; gap: 4px; font-size: 0.875rem; font-weight: 500; line-height: 1; color: var(--foreground); user-select: none; }
+    .field-input { height: 36px; width: 100%; border-radius: var(--radius-medium); border: 1px solid var(--border-input); background: var(--background); padding: 0 var(--space-200); font-size: 0.875rem; color: var(--foreground); outline: none; box-sizing: border-box; }
+    .field-input::placeholder { color: var(--placeholder); }
+    .field-input:focus { border-color: var(--ring); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 30%, transparent); }
+    .field-description { font-size: 0.75rem; line-height: 1.625; color: var(--muted-foreground); }
+  </style>
+</head>
+<body>
+  <div class="field">
+    <label class="field-label" for="field-email">Email</label>
+    <input class="field-input" id="field-email" type="email" placeholder="you@example.com" />
+    <p class="field-description">We'll never share your email.</p>
+  </div>
+</body>
+</html>

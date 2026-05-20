@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AlertDialog Destructive</title>
+  <style>
+    .overlay {
+      position: fixed; inset: 0; z-index: 50;
+      background: rgba(46,43,43,0.4); backdrop-filter: blur(2px);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .dialog {
+      background: var(--background); border: 1px solid var(--border);
+      border-radius: var(--radius-large); padding: var(--space-300);
+      width: 100%; max-width: 480px;
+    }
+    .dialog-title {
+      font-family: var(--font-lexend), sans-serif; font-size: 18px; font-weight: 600;
+      color: var(--foreground); margin: 0 0 6px;
+    }
+    .dialog-desc {
+      font-family: var(--font-lexend), sans-serif; font-size: 14px; line-height: 1.6;
+      color: var(--muted-foreground); margin: 0 0 16px;
+    }
+    .footer { display: flex; justify-content: flex-end; gap: var(--space-150); }
+    .btn-cancel {
+      display: inline-flex; height: 36px; align-items: center;
+      padding: 0 var(--space-200); border: 1px solid var(--border);
+      border-radius: var(--radius-medium); background: var(--background);
+      color: var(--foreground); font-family: var(--font-lexend), sans-serif;
+      font-size: 14px; cursor: pointer;
+    }
+    .btn-cancel:hover { background: var(--muted-hover); }
+    .btn-delete {
+      display: inline-flex; height: 36px; align-items: center;
+      padding: 0 var(--space-200); border: 1px solid transparent;
+      border-radius: var(--radius-medium); background: var(--destructive);
+      color: var(--destructive-foreground); font-family: var(--font-lexend), sans-serif;
+      font-size: 14px; cursor: pointer;
+    }
+    .btn-trigger {
+      display: inline-flex; height: 36px; align-items: center;
+      padding: 0 var(--space-200); border: 1px solid transparent;
+      border-radius: var(--radius-medium); background: var(--destructive);
+      color: var(--destructive-foreground); font-family: var(--font-lexend), sans-serif;
+      font-size: 14px; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="btn-trigger" onclick="document.getElementById('overlay').style.display='flex'">
+    Delete Account
+  </button>
+
+  <div id="overlay" class="overlay" style="display:none">
+    <div class="dialog" role="alertdialog" aria-modal="true">
+      <h2 class="dialog-title">Delete account</h2>
+      <p class="dialog-desc">
+        This will permanently delete your account and all associated data.
+        You cannot undo this action.
+      </p>
+      <div class="footer">
+        <button class="btn-cancel" onclick="document.getElementById('overlay').style.display='none'">Cancel</button>
+        <button class="btn-delete" onclick="document.getElementById('overlay').style.display='none'">Delete</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

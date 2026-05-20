@@ -1,0 +1,61 @@
+<style>
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    border-radius: var(--radius-full, 99px);
+    height: 28px;
+    padding: var(--space-050, 4px) var(--space-150, 12px);
+    gap: var(--space-050, 4px);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 150ms;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    white-space: nowrap;
+    border: 1px solid transparent;
+  }
+  .tag-solid-default { background: var(--secondary, #f4f4f4); color: var(--foreground, #2e2b2b); }
+  .tag-solid-default:hover { background: var(--secondary-hover, #ebe9e8); }
+  .tag-solid-default:active { background: var(--muted-active, #c2bcbb); }
+
+  .tag-solid-brand { background: var(--primary, #f8785e); color: var(--primary-foreground, #ffffff); }
+  .tag-solid-brand:hover { background: var(--primary-hover, #cf624c); }
+  .tag-solid-brand:active { background: var(--primary-active, #a64c39); }
+
+  .tag-solid-white {
+    background: var(--background, #ffffff);
+    color: var(--foreground, #2e2b2b);
+    border: 1px solid var(--border, #ebe9e8);
+  }
+  .tag-solid-white:hover { background: var(--muted, #fafafa); }
+  .tag-solid-white:active { background: var(--secondary, #f4f4f4); }
+
+  .tag-solid-red { background: var(--destructive-bold, #ff0000); color: var(--primary-foreground, #ffffff); }
+  .tag-solid-red:hover { background: var(--destructive, #cc0000); }
+  .tag-solid-red:active { background: var(--destructive-accent, #ae2e24); }
+
+  .tag-solid-blue { background: var(--info-bold, #2d70cf); color: var(--primary-foreground, #ffffff); }
+  .tag-solid-blue:hover { background: var(--info, #2d70cf); }
+
+  .tag-solid-yellow { background: var(--warning-bold, #fbbf24); color: var(--foreground, #2e2b2b); }
+  .tag-solid-yellow:hover { background: var(--warning, #d97706); }
+
+  .tag-solid-purple { background: var(--discovery-bold, #3d4884); color: var(--primary-foreground, #ffffff); }
+  .tag-solid-purple:hover { background: var(--discovery, #505eac); }
+
+  .tag-solid-lime { background: var(--success-bold, #4d7c0f); color: var(--primary-foreground, #ffffff); }
+  .tag-solid-lime:hover { background: var(--success, #65a30d); }
+</style>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:24px;">
+  <span class="tag tag-solid-default" tabindex="0">Default</span>
+  <span class="tag tag-solid-brand" tabindex="0">Brand</span>
+  <span class="tag tag-solid-white" tabindex="0">White</span>
+  <span class="tag tag-solid-red" tabindex="0">Red</span>
+  <span class="tag tag-solid-blue" tabindex="0">Blue</span>
+  <span class="tag tag-solid-yellow" tabindex="0">Yellow</span>
+  <span class="tag tag-solid-purple" tabindex="0">Purple</span>
+  <span class="tag tag-solid-lime" tabindex="0">Lime Green</span>
+</div>

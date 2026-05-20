@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Input — Default</title>
+  <style>
+    body { margin: 0; font-family: var(--font-lexend, 'Lexend', sans-serif); background: var(--background, #ffffff); }
+    :root {
+      --background: #ffffff; --foreground: #2e2b2b;
+      --muted-foreground: #7a7272; --placeholder: #c7c6c6;
+      --border: #ebe9e8; --border-input: #ada5a5; --ring: #8290dd;
+      --radius-medium: 8px; --space-075: 6px; --space-150: 12px;
+    }
+    .stack { display: flex; flex-direction: column; gap: 16px; width: 256px; }
+    .field { display: flex; flex-direction: column; gap: var(--space-075); }
+    .label { font-size: 0.875rem; font-weight: 500; color: var(--foreground); }
+    .input { display: flex; height: 36px; width: 100%; min-width: 0; border-radius: var(--radius-medium); border: 1px solid var(--border); background: var(--background); padding: 0 var(--space-150); font-size: 0.875rem; color: var(--foreground); outline: none; transition: border-color 0.15s; box-sizing: border-box; }
+    .input::placeholder { color: var(--placeholder); }
+    .input:focus { border-color: var(--ring); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 30%, transparent); }
+    .description { font-size: 0.75rem; line-height: 1.625; color: var(--muted-foreground); }
+  </style>
+</head>
+<body style="padding: 24px;">
+  <div class="stack">
+    <input class="input" type="text" placeholder="Enter text…" />
+    <div class="field">
+      <label class="label" for="email">Email address</label>
+      <input class="input" id="email" type="email" placeholder="you@example.com" />
+      <p class="description">We'll never share your email.</p>
+    </div>
+  </div>
+</body>
+</html>

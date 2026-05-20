@@ -1,0 +1,54 @@
+<style>
+  .loz {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    flex-shrink: 0;
+    height: 16px;
+    padding: 0 4px;
+    gap: 4px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    white-space: nowrap;
+    user-select: none;
+  }
+  .loz--solid-brand  { background-color: var(--primary, #f8785e); color: #ffffff; }
+  .loz--solid-red    { background-color: var(--accent-red-bold, #ff3333); color: #ffffff; }
+  .loz--solid-green  { background-color: var(--accent-green-bold, #229666); color: #ffffff; }
+  .loz--light-yellow { background-color: var(--accent-yellow, #fef3c7); color: var(--warning, #d97706); }
+  .loz--outline-blue { background: transparent; border: 1px solid var(--info, #2d70cf); color: var(--info, #2d70cf); }
+  .indicator {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background-color: currentColor;
+    opacity: 0.7;
+    flex-shrink: 0;
+  }
+</style>
+
+<div style="display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:16px;">
+  <div class="loz loz--solid-brand">
+    <span class="indicator"></span>
+    Active
+  </div>
+  <div class="loz loz--solid-red">
+    <span class="indicator"></span>
+    Error
+  </div>
+  <div class="loz loz--solid-green">
+    <span class="indicator"></span>
+    Success
+  </div>
+  <div class="loz loz--light-yellow">
+    <span class="indicator"></span>
+    Warning
+  </div>
+  <div class="loz loz--outline-blue">
+    <span class="indicator"></span>
+    Info
+  </div>
+</div>

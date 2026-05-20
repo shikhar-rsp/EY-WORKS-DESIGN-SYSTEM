@@ -1,0 +1,80 @@
+<div style="position: relative; width: 100%; padding: 0 4px;">
+  <div style="overflow: hidden;">
+    <div
+      id="carousel-multi-track"
+      style="
+        display: flex;
+        margin-left: -8px;
+        transition: transform 300ms ease-in-out;
+        transform: translateX(0%);
+      "
+    >
+      <!-- Each item is 1/3 width -->
+      <div v-for in range(5) style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 33.333%; padding-left: 8px;">
+        <div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 20px; font-weight: 700; color: var(--foreground);">1</div>
+      </div>
+      <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 33.333%; padding-left: 8px;">
+        <div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 20px; font-weight: 700; color: var(--foreground);">2</div>
+      </div>
+      <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 33.333%; padding-left: 8px;">
+        <div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 20px; font-weight: 700; color: var(--foreground);">3</div>
+      </div>
+      <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 33.333%; padding-left: 8px;">
+        <div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 20px; font-weight: 700; color: var(--foreground);">4</div>
+      </div>
+      <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 33.333%; padding-left: 8px;">
+        <div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 20px; font-weight: 700; color: var(--foreground);">5</div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    aria-label="Previous slide"
+    onclick="multiPrev()"
+    id="multi-prev-btn"
+    style="
+      position: absolute; left: -16px; top: 50%; transform: translateY(-50%);
+      display: flex; width: 32px; height: 32px; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid var(--border); background: var(--background);
+      color: var(--foreground); cursor: not-allowed; opacity: 0.5; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    "
+    disabled
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+  </button>
+
+  <button
+    aria-label="Next slide"
+    onclick="multiNext()"
+    id="multi-next-btn"
+    style="
+      position: absolute; right: -16px; top: 50%; transform: translateY(-50%);
+      display: flex; width: 32px; height: 32px; align-items: center; justify-content: center;
+      border-radius: 50%; border: 1px solid var(--border); background: var(--background);
+      color: var(--foreground); cursor: pointer; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    "
+  >
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+  </button>
+</div>
+
+<script>
+  let multiIndex = 0;
+  const multiMax = 2; // 5 items - 3 visible
+  const multiTrack = document.getElementById('carousel-multi-track');
+  const multiPrevBtn = document.getElementById('multi-prev-btn');
+  const multiNextBtn = document.getElementById('multi-next-btn');
+
+  function updateMulti() {
+    multiTrack.style.transform = `translateX(-${multiIndex * 33.333}%)`;
+    multiPrevBtn.disabled = multiIndex === 0;
+    multiPrevBtn.style.opacity = multiIndex === 0 ? '0.5' : '1';
+    multiPrevBtn.style.cursor = multiIndex === 0 ? 'not-allowed' : 'pointer';
+    multiNextBtn.disabled = multiIndex >= multiMax;
+    multiNextBtn.style.opacity = multiIndex >= multiMax ? '0.5' : '1';
+    multiNextBtn.style.cursor = multiIndex >= multiMax ? 'not-allowed' : 'pointer';
+  }
+
+  function multiPrev() { if (multiIndex > 0) { multiIndex--; updateMulti(); } }
+  function multiNext() { if (multiIndex < multiMax) { multiIndex++; updateMulti(); } }
+</script>

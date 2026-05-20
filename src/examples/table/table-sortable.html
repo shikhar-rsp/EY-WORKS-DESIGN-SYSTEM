@@ -1,0 +1,110 @@
+<style>
+  .ds-table-wrap { overflow: hidden; border-radius: var(--radius-large, 16px); border: 1px solid var(--border, #ebe9e8); width: 100%; }
+  .ds-table { width: 100%; border-collapse: collapse; }
+  .ds-th {
+    background: var(--secondary, #f4f4f4);
+    border-bottom: 1px solid var(--border, #ebe9e8);
+    height: 40px;
+    padding: 0 var(--space-200, 16px);
+    text-align: left;
+    cursor: pointer;
+    transition: background-color 150ms;
+  }
+  .ds-th:hover { background: var(--accent-gray-subtle, #c7c6c6); }
+  .ds-th-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-foreground, #7a7272);
+    white-space: nowrap;
+    user-select: none;
+  }
+  .ds-th-right { text-align: right; }
+  .ds-th-right .ds-th-label { justify-content: flex-end; }
+  .ds-td {
+    background: var(--background, #ffffff);
+    border-bottom: 1px solid var(--border, #ebe9e8);
+    height: 72px;
+    padding: var(--space-100, 8px) var(--space-200, 16px);
+    transition: background-color 150ms;
+  }
+  .ds-tr:hover .ds-td { background: var(--secondary, #f4f4f4); }
+  .ds-td-last { border-bottom: none; }
+  .ds-td-right { text-align: right; }
+  .sort-icon { width: 7px; height: 7px; color: var(--muted-foreground, #7a7272); }
+</style>
+
+<div style="padding:24px;width:100%;max-width:768px;">
+  <div class="ds-table-wrap">
+    <table class="ds-table">
+      <thead>
+        <tr>
+          <th class="ds-th">
+            <span class="ds-th-label">
+              Product
+              <svg class="sort-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4V20M12 4L8 8M12 4L16 8M12 20L8 16M12 20L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </th>
+          <th class="ds-th">
+            <span class="ds-th-label">
+              Category
+              <svg class="sort-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4V20M12 4L8 8M12 4L16 8M12 20L8 16M12 20L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </th>
+          <th class="ds-th ds-th-right">
+            <span class="ds-th-label">
+              Pricing
+              <svg class="sort-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4V20M12 4L8 8M12 4L16 8M12 20L8 16M12 20L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </th>
+          <th class="ds-th ds-th-right">
+            <span class="ds-th-label">
+              Seats
+              <svg class="sort-icon" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4V20M12 4L8 8M12 4L16 8M12 20L8 16M12 20L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ds-tr">
+          <td class="ds-td"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-weight:500;color:var(--foreground,#2e2b2b);">Dashboard Pro</span></td>
+          <td class="ds-td"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--muted-foreground,#7a7272);">Analytics</span></td>
+          <td class="ds-td ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--foreground,#2e2b2b);">$49/mo</span></td>
+          <td class="ds-td ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted-foreground,#7a7272);">12</span></td>
+        </tr>
+        <tr class="ds-tr">
+          <td class="ds-td"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-weight:500;color:var(--foreground,#2e2b2b);">Storage Plus</span></td>
+          <td class="ds-td"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--muted-foreground,#7a7272);">Infrastructure</span></td>
+          <td class="ds-td ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--foreground,#2e2b2b);">$29/mo</span></td>
+          <td class="ds-td ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted-foreground,#7a7272);">8</span></td>
+        </tr>
+        <tr class="ds-tr">
+          <td class="ds-td"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-weight:500;color:var(--foreground,#2e2b2b);">Auth Shield</span></td>
+          <td class="ds-td"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--muted-foreground,#7a7272);">Security</span></td>
+          <td class="ds-td ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--foreground,#2e2b2b);">$19/mo</span></td>
+          <td class="ds-td ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted-foreground,#7a7272);">25</span></td>
+        </tr>
+        <tr class="ds-tr">
+          <td class="ds-td ds-td-last"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-weight:500;color:var(--foreground,#2e2b2b);">Notify Hub</span></td>
+          <td class="ds-td ds-td-last"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--muted-foreground,#7a7272);">Messaging</span></td>
+          <td class="ds-td ds-td-last ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;color:var(--foreground,#2e2b2b);">$9/mo</span></td>
+          <td class="ds-td ds-td-last ds-td-right"><span style="font-family:'Lexend',sans-serif;font-size:14px;font-variant-numeric:tabular-nums;color:var(--muted-foreground,#7a7272);">5</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

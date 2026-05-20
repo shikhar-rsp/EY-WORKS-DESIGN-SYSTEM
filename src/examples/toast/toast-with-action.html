@@ -1,0 +1,50 @@
+<style>
+  .toast-container { position: fixed; bottom: 16px; right: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; pointer-events: none; }
+  .toast-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 8px; border-radius: var(--radius-medium);
+    box-shadow: 0px 0px 1px rgba(30,31,33,0.31), 0px 1px 1px rgba(30,31,33,0.25);
+    background: #ffcccc; width: 320px; pointer-events: all;
+    animation: toast-slide-in 0.2s ease-out;
+  }
+  @keyframes toast-slide-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .toast-msg { flex: 1; font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500; color: var(--foreground); }
+  .toast-action { background: none; border: none; cursor: pointer; font-family: var(--font-lexend), sans-serif; font-size: 14px; color: var(--primary); padding: 8px 16px; border-radius: var(--radius-medium); }
+  .toast-close { background: none; border: none; cursor: pointer; color: var(--subtlest); font-size: 16px; padding: 2px 4px; border-radius: 4px; }
+  .trigger-btn {
+    padding: 8px 16px; border-radius: var(--radius-medium);
+    border: 1px solid var(--border); background: var(--background);
+    font-family: var(--font-lexend), sans-serif; font-size: 14px; color: var(--foreground); cursor: pointer;
+  }
+</style>
+<div id="toastContainer" class="toast-container"></div>
+<button class="trigger-btn" onclick="showActionToast()">Show toast with action</button>
+<script>
+function showActionToast() {
+  var container = document.getElementById('toastContainer');
+  var item = document.createElement('div');
+  item.className = 'toast-item';
+  item.innerHTML =
+    '<span class="toast-msg">File removed.</span>'
+    + '<button class="toast-action" onclick="onUndo(this)">Undo</button>'
+    + '<button class="toast-close" onclick="this.parentNode.remove()">&times;</button>';
+  container.appendChild(item);
+  var timer = setTimeout(function() { if (item.parentNode) item.remove(); }, 4000);
+  item._timer = timer;
+}
+function onUndo(btn) {
+  var item = btn.parentNode;
+  clearTimeout(item._timer);
+  item.remove();
+  showToastSuccess();
+}
+function showToastSuccess() {
+  var container = document.getElementById('toastContainer');
+  var item = document.createElement('div');
+  item.className = 'toast-item';
+  item.style.background = '#ecfccb';
+  item.innerHTML = '<span class="toast-msg">File restored.</span><button class="toast-close" onclick="this.parentNode.remove()">&times;</button>';
+  container.appendChild(item);
+  setTimeout(function() { if (item.parentNode) item.remove(); }, 4000);
+}
+</script>

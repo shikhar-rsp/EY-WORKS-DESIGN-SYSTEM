@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    /*
+     * Note: This is a simplified visual mockup of the TimePicker trigger.
+     * The full scrollable portal behavior requires a JavaScript component runtime.
+     */
+    body {
+      font-family: 'Lexend', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      background: var(--background, #ffffff);
+    }
+    .trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 36px;
+      padding: 0 12px;
+      border-radius: var(--radius-medium, 8px);
+      border: 1px solid var(--border, #ebe9e8);
+      background: var(--background, #ffffff);
+      color: var(--foreground, #2e2b2b);
+      font-size: 14px;
+      font-family: inherit;
+      cursor: pointer;
+      transition: border-color 150ms;
+    }
+    .trigger:hover { border-color: var(--border-hover, #d1cece); }
+    .trigger svg { color: var(--muted-foreground, #7a7272); flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <!-- Trigger button showing the selected time value -->
+  <button class="trigger" aria-haspopup="dialog" aria-expanded="false">
+    <!-- Clock icon -->
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5"/>
+      <path d="M8 5v3l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span>14:30</span>
+    <!-- Chevron icon -->
+    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="margin-left: 4px;">
+      <path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </button>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Badge – Colors</title>
+  <style>
+    body { display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: var(--background, #ffffff); }
+    .badge { position: relative; display: inline-flex; }
+    .indicator {
+      position: absolute; z-index: 10; top: -4px; right: -4px;
+      transform: translate(33%, -33%);
+      min-width: 18px; height: 18px; border-radius: 9999px; padding: 0 4px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-lexend, sans-serif); font-size: 10px; font-weight: 600; line-height: 1;
+      box-shadow: 0 0 0 2px var(--background, #ffffff);
+    }
+    .avatar {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: 9999px;
+      background: var(--muted, #fafafa); color: var(--foreground, #2e2b2b);
+      font-family: var(--font-lexend, sans-serif); font-size: 12px; font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div style="display: flex; gap: 24px; align-items: center;">
+    <div class="badge">
+      <span class="indicator" style="background: var(--destructive, #cc0000); color: var(--destructive-foreground, #fff);">3</span>
+      <span class="avatar">D</span>
+    </div>
+    <div class="badge">
+      <span class="indicator" style="background: var(--primary, #f8785e); color: var(--primary-foreground, #fff);">3</span>
+      <span class="avatar">P</span>
+    </div>
+    <div class="badge">
+      <span class="indicator" style="background: var(--success, #65a30d); color: var(--success-foreground, #65a30d);">3</span>
+      <span class="avatar">S</span>
+    </div>
+    <div class="badge">
+      <span class="indicator" style="background: var(--warning-bold, #fbbf24); color: #fff;">3</span>
+      <span class="avatar">W</span>
+    </div>
+  </div>
+</body>
+</html>

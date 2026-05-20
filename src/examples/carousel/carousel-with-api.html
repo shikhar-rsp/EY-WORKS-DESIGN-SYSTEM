@@ -1,0 +1,47 @@
+<div style="display: flex; flex-direction: column; align-items: center; gap: 12px;">
+  <p style="font-family: var(--font-lexend, sans-serif); font-size: 14px; color: var(--muted-foreground);">
+    Slide <strong id="api-current" style="color: var(--foreground);">1</strong> of <strong style="color: var(--foreground);">4</strong>
+  </p>
+  <div style="position: relative; width: 240px;">
+    <div style="overflow: hidden;">
+      <div
+        id="carousel-api-track"
+        style="display: flex; transition: transform 300ms ease-in-out; transform: translateX(0%);"
+      >
+        <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-left: 16px;"><div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">1</div></div>
+        <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-left: 16px;"><div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">2</div></div>
+        <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-left: 16px;"><div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">3</div></div>
+        <div style="min-width: 0; flex-shrink: 0; flex-grow: 0; flex-basis: 100%; padding-left: 16px;"><div style="display: flex; aspect-ratio: 1; align-items: center; justify-content: center; border-radius: var(--radius-large); background: var(--muted); font-size: 30px; font-weight: 700; color: var(--foreground);">4</div></div>
+      </div>
+    </div>
+    <button aria-label="Previous slide" id="api-prev" onclick="apiPrev()" disabled style="position: absolute; left: -16px; top: 50%; transform: translateY(-50%); display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--border); background: var(--background); color: var(--foreground); opacity: 0.5; cursor: not-allowed;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6" /></svg>
+    </button>
+    <button aria-label="Next slide" id="api-next" onclick="apiNext()" style="position: absolute; right: -16px; top: 50%; transform: translateY(-50%); display: flex; width: 32px; height: 32px; align-items: center; justify-content: center; border-radius: 50%; border: 1px solid var(--border); background: var(--background); color: var(--foreground); cursor: pointer;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6" /></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+  let apiIndex = 0;
+  const apiTotal = 4;
+  const apiTrack = document.getElementById('carousel-api-track');
+  const apiPrevBtn = document.getElementById('api-prev');
+  const apiNextBtn = document.getElementById('api-next');
+  const apiCurrentEl = document.getElementById('api-current');
+
+  function updateApi() {
+    apiTrack.style.transform = `translateX(-${apiIndex * 100}%)`;
+    apiCurrentEl.textContent = apiIndex + 1;
+    apiPrevBtn.disabled = apiIndex === 0;
+    apiPrevBtn.style.opacity = apiIndex === 0 ? '0.5' : '1';
+    apiPrevBtn.style.cursor = apiIndex === 0 ? 'not-allowed' : 'pointer';
+    apiNextBtn.disabled = apiIndex >= apiTotal - 1;
+    apiNextBtn.style.opacity = apiIndex >= apiTotal - 1 ? '0.5' : '1';
+    apiNextBtn.style.cursor = apiIndex >= apiTotal - 1 ? 'not-allowed' : 'pointer';
+  }
+
+  function apiPrev() { if (apiIndex > 0) { apiIndex--; updateApi(); } }
+  function apiNext() { if (apiIndex < apiTotal - 1) { apiIndex++; updateApi(); } }
+</script>

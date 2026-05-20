@@ -1,0 +1,86 @@
+<!-- Navigation Menu — default with dropdown -->
+<nav aria-label="Main navigation" style="position: relative; display: flex; align-items: center; font-family: var(--font-lexend, sans-serif);">
+  <ul style="display: flex; list-style: none; padding: 0; margin: 0; gap: var(--space-050); align-items: center;">
+    <li style="position: relative;">
+      <button
+        type="button"
+        aria-expanded="false"
+        aria-haspopup="true"
+        id="trigger-1"
+        onclick="
+          var btn = this;
+          var content = document.getElementById('content-1');
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !expanded);
+          content.style.display = expanded ? 'none' : 'block';
+        "
+        style="
+          display: inline-flex; height: 36px; align-items: center; justify-content: center;
+          gap: var(--space-075); border-radius: var(--radius-medium); padding: 0 var(--space-150);
+          font-family: var(--font-lexend, sans-serif); font-size: 14px; font-weight: 500;
+          color: var(--foreground); background: transparent; border: none; cursor: pointer;
+          outline: none; transition: background 150ms;
+        "
+        onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'"
+      >
+        Getting Started
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m6 9 6 6 6-6"/>
+        </svg>
+      </button>
+      <div id="content-1" role="region" aria-labelledby="trigger-1" style="display: none; position: absolute; left: 0; top: 100%; margin-top: var(--space-050); min-width: 12rem; border-radius: var(--radius-large); border: 1px solid var(--border); background: var(--background); padding: var(--space-100); box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 50;">
+        <ul style="list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-100); width: 400px; grid-template-columns: 160px 1fr;">
+          <li style="grid-row: span 3;">
+            <div style="display: flex; height: 100%; flex-direction: column; justify-content: flex-end; border-radius: var(--radius-medium); background: var(--primary); padding: var(--space-200);">
+              <p style="font-size: 14px; font-weight: 700; color: var(--primary-foreground); margin: 0;">eyDS</p>
+              <p style="margin: var(--space-050) 0 0; font-size: 12px; color: var(--primary-foreground); opacity: 0.8;">A component library synced from Figma.</p>
+            </div>
+          </li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-100); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'"><p style="font-size: 14px; font-weight: 500; color: var(--foreground); margin: 0;">Introduction</p><p style="font-size: 12px; color: var(--secondary-foreground); margin: 2px 0 0;">Overview of the system.</p></a></li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-100); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'"><p style="font-size: 14px; font-weight: 500; color: var(--foreground); margin: 0;">Installation</p><p style="font-size: 12px; color: var(--secondary-foreground); margin: 2px 0 0;">Copy components into your project.</p></a></li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-100); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'"><p style="font-size: 14px; font-weight: 500; color: var(--foreground); margin: 0;">Theming</p><p style="font-size: 12px; color: var(--secondary-foreground); margin: 2px 0 0;">Customize colors and typography.</p></a></li>
+        </ul>
+      </div>
+    </li>
+    <li style="position: relative;">
+      <button
+        type="button"
+        aria-expanded="false"
+        aria-haspopup="true"
+        id="trigger-2"
+        onclick="
+          var btn = this;
+          var content = document.getElementById('content-2');
+          var expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !expanded);
+          content.style.display = expanded ? 'none' : 'block';
+        "
+        style="
+          display: inline-flex; height: 36px; align-items: center; justify-content: center;
+          gap: var(--space-075); border-radius: var(--radius-medium); padding: 0 var(--space-150);
+          font-family: var(--font-lexend, sans-serif); font-size: 14px; font-weight: 500;
+          color: var(--foreground); background: transparent; border: none; cursor: pointer;
+          outline: none;
+        "
+        onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'"
+      >
+        Components
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div id="content-2" role="region" aria-labelledby="trigger-2" style="display: none; position: absolute; left: 0; top: 100%; margin-top: var(--space-050); min-width: 12rem; border-radius: var(--radius-large); border: 1px solid var(--border); background: var(--background); padding: var(--space-100); box-shadow: 0 4px 12px rgba(0,0,0,0.08); z-index: 50;">
+        <ul style="list-style: none; padding: var(--space-100); margin: 0; display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-050); width: 300px;">
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-075) var(--space-100); font-size: 14px; color: var(--foreground); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'">Button</a></li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-075) var(--space-100); font-size: 14px; color: var(--foreground); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'">Input</a></li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-075) var(--space-100); font-size: 14px; color: var(--foreground); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'">Dialog</a></li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-075) var(--space-100); font-size: 14px; color: var(--foreground); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'">Select</a></li>
+          <li><a href="#" style="display: block; border-radius: var(--radius-medium); padding: var(--space-075) var(--space-100); font-size: 14px; color: var(--foreground); text-decoration: none;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'">Carousel</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <a href="#" style="display: inline-flex; height: 36px; align-items: center; justify-content: center; border-radius: var(--radius-medium); padding: 0 var(--space-150); font-family: var(--font-lexend, sans-serif); font-size: 14px; font-weight: 500; color: var(--foreground); text-decoration: none; transition: background 150ms;" onmouseover="this.style.background='var(--muted)'" onmouseout="this.style.background='transparent'">
+        Documentation
+      </a>
+    </li>
+  </ul>
+</nav>

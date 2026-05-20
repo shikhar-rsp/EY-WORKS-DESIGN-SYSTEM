@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Segmented — Controlled</title>
+    <style>
+      :root {
+        --muted: #fafafa;
+        --background: #ffffff;
+        --foreground: #2e2b2b;
+        --muted-foreground: #7a7272;
+        --border: #ebe9e8;
+        --radius-medium: 8px;
+        --radius-small: 4px;
+        --font-lexend: 'Lexend', sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        padding: 24px;
+        font-family: var(--font-lexend);
+        background: var(--background);
+      }
+
+      .segmented {
+        display: inline-flex;
+        align-items: center;
+        height: 36px;
+        background: var(--muted);
+        border-radius: var(--radius-medium);
+        padding: 4px;
+        gap: 4px;
+      }
+
+      .segmented-item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        height: 28px;
+        padding: 0 16px;
+        border: none;
+        border-radius: var(--radius-small);
+        font-family: var(--font-lexend);
+        font-size: 14px;
+        font-weight: 500;
+        cursor: pointer;
+        background: transparent;
+        color: var(--muted-foreground);
+        transition: all 150ms;
+      }
+
+      .segmented-item:hover {
+        color: var(--foreground);
+      }
+
+      .segmented-item[aria-selected="true"] {
+        background: var(--background);
+        color: var(--foreground);
+        font-weight: 600;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      }
+
+      .selected-label {
+        font-size: 14px;
+        color: var(--muted-foreground);
+      }
+
+      .selected-label strong {
+        color: var(--foreground);
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="segmented" role="tablist" aria-orientation="horizontal">
+      <button class="segmented-item" role="tab" aria-selected="false" data-value="day">Day</button>
+      <button class="segmented-item" role="tab" aria-selected="true" data-value="week">Week</button>
+      <button class="segmented-item" role="tab" aria-selected="false" data-value="month">Month</button>
+    </div>
+    <p class="selected-label">Selected: <strong id="selected-value">week</strong></p>
+
+    <script>
+      const items = document.querySelectorAll('.segmented-item');
+      const selectedLabel = document.getElementById('selected-value');
+
+      items.forEach((item) => {
+        item.addEventListener('click', () => {
+          items.forEach((i) => i.setAttribute('aria-selected', 'false'));
+          item.setAttribute('aria-selected', 'true');
+          selectedLabel.textContent = item.getAttribute('data-value');
+        });
+      });
+    </script>
+  </body>
+</html>

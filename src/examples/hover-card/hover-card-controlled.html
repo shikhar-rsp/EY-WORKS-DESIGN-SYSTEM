@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Hover Card — Controlled</title>
+  <style>
+    body { margin: 0; font-family: var(--font-lexend, 'Lexend', sans-serif); background: var(--background, #ffffff); }
+    :root {
+      --background: #ffffff; --foreground: #2e2b2b;
+      --primary: #f8785e; --secondary-foreground: #505258;
+      --muted: #fafafa; --border: #ebe9e8;
+      --secondary: #f4f4f4; --secondary-hover: #ebe9e8;
+      --radius-medium: 8px; --radius-large: 16px;
+      --space-100: 8px; --space-200: 16px;
+    }
+    .wrapper { display: flex; flex-direction: column; align-items: center; gap: 16px; padding: 40px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--secondary); color: var(--foreground); border-radius: var(--radius-medium); padding: 0 12px; height: 32px; font-size: 0.875rem; font-weight: 500; cursor: pointer; border: 1px solid var(--border); }
+    .btn:hover { background: var(--secondary-hover); }
+    .trigger { font-size: 0.875rem; font-weight: 500; color: var(--primary); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+    .card { margin-top: 4px; width: 256px; border-radius: var(--radius-large); border: 1px solid var(--border); background: var(--background); padding: var(--space-200); box-shadow: 0 4px 24px rgba(0,0,0,0.12); }
+    .card-name { font-size: 0.875rem; font-weight: 600; color: var(--foreground); margin: 0 0 var(--space-100); }
+    .card-bio { font-size: 0.875rem; color: var(--secondary-foreground); margin: 0; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <button class="btn" onclick="toggleCard()">Open card</button>
+    <span class="trigger">@vercel</span>
+    <div class="card hidden" id="hovercard">
+      <p class="card-name">Vercel</p>
+      <p class="card-bio">Build and deploy the best web experiences with the Vercel platform.</p>
+    </div>
+  </div>
+  <script>
+    let isOpen = false;
+    function toggleCard() {
+      isOpen = !isOpen;
+      document.getElementById('hovercard').classList.toggle('hidden', !isOpen);
+      document.querySelector('button').textContent = isOpen ? 'Close card' : 'Open card';
+    }
+  </script>
+</body>
+</html>

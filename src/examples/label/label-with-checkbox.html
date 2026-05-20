@@ -1,0 +1,25 @@
+<div style="display: flex; align-items: center; gap: 8px;">
+  <!-- Checkbox -->
+  <span style="position: relative; display: inline-flex; align-items: center; justify-content: center; width: 16px; height: 16px; border-radius: var(--radius-xsmall); background: var(--background); border: 1px solid var(--border-input); cursor: pointer;"
+    onclick="this.dataset.checked = this.dataset.checked === 'true' ? 'false' : 'true'; this.style.background = this.dataset.checked === 'true' ? 'var(--primary)' : 'var(--background)'; this.style.border = this.dataset.checked === 'true' ? 'none' : '1px solid var(--border-input)'; this.querySelector('svg').style.display = this.dataset.checked === 'true' ? 'block' : 'none';"
+    data-checked="false"
+  >
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" style="display: none; stroke: var(--primary-foreground); stroke-width: 3px; stroke-linecap: round; stroke-linejoin: round;">
+      <path d="M19 6.5L8.5 17.5L5 14" />
+    </svg>
+    <input id="terms" type="checkbox" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0);" />
+  </span>
+  <!-- Label -->
+  <label for="terms" style="
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-050);
+    font-family: 'Lexend', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--foreground);
+    user-select: none;
+    cursor: pointer;
+  ">Accept terms and conditions</label>
+</div>

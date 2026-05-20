@@ -1,0 +1,73 @@
+<!-- Calendar datetime dropdown — date + time picker -->
+<style>
+  .ddt-wrap { display: flex; flex-direction: row; background: var(--background); border-radius: 6px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); overflow: hidden; font-family: var(--font-lexend, sans-serif); border: 1px solid var(--border); }
+  .ddt-cal { display: flex; flex-direction: column; width: 280px; border-right: 1px solid var(--border); }
+  .ddt-hdr { display: flex; align-items: center; justify-content: space-between; height: 40px; padding: 0 8px; border-bottom: 1px solid var(--border); }
+  .ddt-hdr-btn { width: 28px; height: 28px; border: 1px solid var(--border); border-radius: var(--radius-small); background: transparent; cursor: pointer; }
+  .ddt-hdr-btn:hover { background: var(--muted); }
+  .ddt-lbl { font-size: 13px; font-weight: 600; color: var(--foreground); }
+  .ddt-wds { display: grid; grid-template-columns: repeat(7, 1fr); padding: 8px 8px 0; }
+  .ddt-wd { text-align: center; font-size: 12px; color: var(--muted-foreground); padding: 4px 0; }
+  .ddt-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; padding: 4px 8px 8px; }
+  .ddt-day { height: 36px; border: none; border-radius: var(--radius-small); background: transparent; color: var(--foreground); font-size: 13px; cursor: pointer; }
+  .ddt-day:hover { background: var(--muted-hover); }
+  .ddt-day.today { background: var(--muted); font-weight: 700; }
+  .ddt-day.selected { background: var(--primary); color: var(--primary-foreground); font-weight: 600; }
+  .ddt-time { display: flex; flex-direction: column; width: 169px; }
+  .ddt-time-hdr { height: 40px; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--foreground); }
+  .ddt-cols { display: flex; flex: 1; overflow: hidden; height: 224px; }
+  .ddt-col { display: flex; flex-direction: column; overflow-y: auto; width: 56px; }
+  .ddt-col::-webkit-scrollbar { display: none; }
+  .ddt-col-item { height: 28px; display: flex; align-items: center; padding-left: 14px; font-size: 14px; color: var(--foreground); cursor: pointer; flex-shrink: 0; }
+  .ddt-col-item:hover { background: var(--muted-hover); }
+  .ddt-col-item.active { color: var(--primary); font-weight: 500; }
+  .ddt-footer { display: flex; align-items: center; justify-content: flex-end; gap: 8px; padding: 8px; border-top: 1px solid var(--border); }
+  .ddt-btn-cancel { height: 32px; padding: 0 16px; font-size: 14px; color: var(--primary); border: 1px solid var(--primary); border-radius: var(--radius-medium); background: transparent; cursor: pointer; font-family: var(--font-lexend, sans-serif); }
+  .ddt-btn-ok { height: 32px; padding: 0 16px; font-size: 14px; color: var(--primary-foreground); background: var(--primary); border: none; border-radius: var(--radius-medium); cursor: pointer; font-family: var(--font-lexend, sans-serif); }
+</style>
+<div class="ddt-wrap">
+  <div class="ddt-cal">
+    <div class="ddt-hdr">
+      <button class="ddt-hdr-btn" onclick="ddtNav(-1)">&#8249;</button>
+      <span class="ddt-lbl" id="ddt-lbl"></span>
+      <button class="ddt-hdr-btn" onclick="ddtNav(1)">&#8250;</button>
+    </div>
+    <div class="ddt-wds" id="ddt-wd"></div>
+    <div class="ddt-grid" id="ddt-grid"></div>
+  </div>
+  <div class="ddt-time">
+    <div class="ddt-time-hdr" id="ddt-tlbl">00:00:00</div>
+    <div class="ddt-cols">
+      <div class="ddt-col" id="ddt-h"></div>
+      <div class="ddt-col" id="ddt-m"></div>
+      <div class="ddt-col" id="ddt-s"></div>
+    </div>
+    <div class="ddt-footer">
+      <button class="ddt-btn-cancel">Cancel</button>
+      <button class="ddt-btn-ok">OK</button>
+    </div>
+  </div>
+</div>
+<script>
+  const MONTHS_DDT=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DAYS_DDT=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const todayDDT=new Date();
+  let ddtY=2021,ddtM=9,ddtSel=null,ddtH=0,ddtMin=0,ddtSec=0;
+  function ddtUpdateTimeLbl(){document.getElementById('ddt-tlbl').textContent=String(ddtH).padStart(2,'0')+':'+String(ddtMin).padStart(2,'0')+':'+String(ddtSec).padStart(2,'0');}
+  function ddtBuildCol(id,max,current,setter){const col=document.getElementById(id);col.innerHTML='';for(let i=0;i<max;i++){const el=document.createElement('div');el.className='ddt-col-item'+(i===current?' active':'');el.textContent=String(i).padStart(2,'0');el.onclick=()=>{setter(i);ddtBuildCol(id,max,i,setter);ddtUpdateTimeLbl();};col.appendChild(el);}}
+  function ddtRender(){
+    document.getElementById('ddt-lbl').textContent=MONTHS_DDT[ddtM]+'  '+ddtY;
+    const wd=document.getElementById('ddt-wd');wd.innerHTML='';
+    DAYS_DDT.forEach(d=>{const el=document.createElement('div');el.className='ddt-wd';el.textContent=d;wd.appendChild(el);});
+    const grid=document.getElementById('ddt-grid');grid.innerHTML='';
+    const first=new Date(ddtY,ddtM,1).getDay(),dim=new Date(ddtY,ddtM+1,0).getDate();
+    for(let i=0;i<first;i++)grid.appendChild(document.createElement('div'));
+    for(let d=1;d<=dim;d++){const btn=document.createElement('button');btn.className='ddt-day';const isT=todayDDT.getFullYear()===ddtY&&todayDDT.getMonth()===ddtM&&todayDDT.getDate()===d;if(isT)btn.classList.add('today');if(ddtSel===d)btn.classList.add('selected');btn.textContent=d;btn.onclick=()=>{ddtSel=d;ddtRender();};grid.appendChild(btn);}
+    ddtBuildCol('ddt-h',24,ddtH,(v)=>{ddtH=v;});
+    ddtBuildCol('ddt-m',60,ddtMin,(v)=>{ddtMin=v;});
+    ddtBuildCol('ddt-s',60,ddtSec,(v)=>{ddtSec=v;});
+    ddtUpdateTimeLbl();
+  }
+  function ddtNav(dir){ddtM+=dir;if(ddtM<0){ddtM=11;ddtY--;}if(ddtM>11){ddtM=0;ddtY++;}ddtRender();}
+  ddtRender();
+</script>

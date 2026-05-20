@@ -1,0 +1,53 @@
+<style>
+  .tabs-list {
+    display: inline-flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border);
+    width: 100%;
+  }
+  .tabs-trigger {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    font-size: 14px;
+    font-family: var(--font-lexend, sans-serif);
+    font-weight: 500;
+    border: none;
+    background: transparent;
+    color: var(--muted-foreground);
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -1px;
+    transition: color 150ms, border-color 150ms;
+  }
+  .tabs-trigger:hover { color: var(--foreground); border-bottom-color: var(--border); }
+  .tabs-trigger[aria-selected="true"] {
+    color: var(--foreground);
+    font-weight: 600;
+    border-bottom-color: var(--primary-active);
+  }
+  .tabs-content { display: none; margin-top: 16px; font-size: 14px; color: var(--secondary-foreground); font-family: var(--font-lexend, sans-serif); }
+  .tabs-content.active { display: block; }
+</style>
+
+<div>
+  <div class="tabs-list" role="tablist">
+    <button class="tabs-trigger" role="tab" aria-selected="true" onclick="selectTab(event, 'account')">Account</button>
+    <button class="tabs-trigger" role="tab" aria-selected="false" onclick="selectTab(event, 'password')">Password</button>
+    <button class="tabs-trigger" role="tab" aria-selected="false" onclick="selectTab(event, 'settings')">Settings</button>
+  </div>
+  <div id="account" class="tabs-content active">Manage your account details and preferences.</div>
+  <div id="password" class="tabs-content">Change your password and security settings.</div>
+  <div id="settings" class="tabs-content">Configure application settings.</div>
+</div>
+
+<script>
+function selectTab(e, id) {
+  document.querySelectorAll('.tabs-trigger').forEach(t => t.setAttribute('aria-selected', 'false'));
+  document.querySelectorAll('.tabs-content').forEach(c => c.classList.remove('active'));
+  e.target.setAttribute('aria-selected', 'true');
+  document.getElementById(id).classList.add('active');
+}
+</script>

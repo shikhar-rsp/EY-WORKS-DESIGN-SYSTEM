@@ -1,0 +1,30 @@
+<style>
+  .vdiv-wrap { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+  .vdiv-label { font-family: 'Lexend', sans-serif; font-size: 12px; color: var(--muted-foreground, #7a7272); }
+</style>
+
+<div style="display: flex; align-items: flex-end; gap: 48px; padding: 24px 16px;">
+  <!-- Large: w=6px container, bar w=4px h=60px -->
+  <div class="vdiv-wrap">
+    <div style="display: flex; align-items: center; justify-content: center; width: 6px; height: 68px;">
+      <div style="width: 4px; height: 60px; border-radius: 99px; background: var(--border-hover, #c2bcbb);"></div>
+    </div>
+    <span class="vdiv-label">Large</span>
+  </div>
+
+  <!-- Medium: w=2px h=20px -->
+  <div class="vdiv-wrap">
+    <div style="display: flex; align-items: center; justify-content: center; width: 2px; height: 20px;">
+      <div style="width: 2px; height: 20px; border-radius: 99px; background: var(--border-hover, #c2bcbb);"></div>
+    </div>
+    <span class="vdiv-label">Medium</span>
+  </div>
+
+  <!-- Small: w=2px h=16px -->
+  <div class="vdiv-wrap">
+    <div style="display: flex; align-items: center; justify-content: center; width: 2px; height: 16px;">
+      <div style="width: 2px; height: 16px; border-radius: 99px; background: var(--border-hover, #c2bcbb);"></div>
+    </div>
+    <span class="vdiv-label">Small</span>
+  </div>
+</div>

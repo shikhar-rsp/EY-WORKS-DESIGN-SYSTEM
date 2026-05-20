@@ -1,0 +1,53 @@
+<style>
+  .otp-root { display: inline-flex; align-items: center; gap: var(--space-150); }
+  .otp-group { display: flex; align-items: center; }
+  .otp-slot {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-top: 1px solid var(--border-input);
+    border-bottom: 1px solid var(--border-input);
+    border-right: 1px solid var(--border-input);
+    background: var(--background);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--foreground);
+    transition: border-color 0.15s;
+  }
+  .otp-slot:first-child { border-left: 1px solid var(--border-input); border-radius: var(--radius-medium) 0 0 var(--radius-medium); }
+  .otp-slot:last-child { border-radius: 0 var(--radius-medium) var(--radius-medium) 0; }
+  .otp-slot input {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+  }
+  .otp-slot.active { outline: 2px solid var(--ring); outline-offset: -2px; z-index: 10; }
+  .otp-separator { display: flex; width: 16px; align-items: center; justify-content: center; color: var(--muted-foreground); }
+</style>
+
+<div class="otp-root" role="group" aria-label="One-time password">
+  <div class="otp-group">
+    <div class="otp-slot"><input type="text" maxlength="1" aria-label="Digit 1" /></div>
+    <div class="otp-slot"><input type="text" maxlength="1" aria-label="Digit 2" /></div>
+    <div class="otp-slot"><input type="text" maxlength="1" aria-label="Digit 3" /></div>
+  </div>
+  <div class="otp-separator" aria-hidden="true">
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+    </svg>
+  </div>
+  <div class="otp-group">
+    <div class="otp-slot"><input type="text" maxlength="1" aria-label="Digit 4" /></div>
+    <div class="otp-slot"><input type="text" maxlength="1" aria-label="Digit 5" /></div>
+    <div class="otp-slot"><input type="text" maxlength="1" aria-label="Digit 6" /></div>
+  </div>
+</div>

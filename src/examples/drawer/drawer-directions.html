@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body { font-family: 'Lexend', sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; background: var(--background, #ffffff); }
+    .controls { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; height: 36px; padding: 0 16px; border-radius: 8px; border: 1px solid var(--border, #ebe9e8); background: var(--background, #ffffff); color: var(--foreground, #2e2b2b); font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit; }
+    .btn:hover { background: var(--muted-hover, #fee4df); border-color: var(--primary, #f8785e); }
+    .overlay { display: none; position: fixed; inset: 0; z-index: 50; background: rgba(46,43,43,0.4); backdrop-filter: blur(2px); }
+    .overlay.open { display: block; }
+    .drawer { position: fixed; z-index: 51; background: var(--background, #ffffff); padding: 24px; box-shadow: 0 10px 60px rgba(0,0,0,0.15); }
+    .drawer.bottom { bottom: 0; left: 0; right: 0; max-height: 85vh; border-radius: 16px 16px 0 0; border-top: 1px solid var(--border, #ebe9e8); }
+    .drawer.top    { top: 0; left: 0; right: 0; max-height: 85vh; border-radius: 0 0 16px 16px; border-bottom: 1px solid var(--border, #ebe9e8); }
+    .drawer.left   { top: 0; bottom: 0; left: 0; width: 75%; max-width: 320px; border-radius: 0 16px 16px 0; border-right: 1px solid var(--border, #ebe9e8); }
+    .drawer.right  { top: 0; bottom: 0; right: 0; width: 75%; max-width: 320px; border-radius: 16px 0 0 16px; border-left: 1px solid var(--border, #ebe9e8); }
+    .handle { display: flex; justify-content: center; margin-bottom: 16px; }
+    .handle-bar { width: 48px; height: 6px; border-radius: 99px; background: var(--muted, #fafafa); }
+    .title { font-size: 18px; font-weight: 600; color: var(--foreground, #2e2b2b); margin: 0 0 4px; }
+    .desc { font-size: 14px; color: var(--muted-foreground, #7a7272); margin: 0 0 16px; }
+    .body { font-size: 14px; color: var(--secondary-foreground, #505258); margin-bottom: 16px; }
+    .close-btn { height: 36px; width: 100%; border-radius: 8px; border: 1px solid var(--border, #ebe9e8); background: var(--background, #ffffff); color: var(--foreground, #2e2b2b); font-size: 14px; font-weight: 500; cursor: pointer; font-family: inherit; margin-top: 16px; }
+    .close-btn:hover { background: var(--muted-hover, #fee4df); }
+  </style>
+</head>
+<body>
+  <div class="controls">
+    <button class="btn" onclick="open('bottom')">Bottom</button>
+    <button class="btn" onclick="open('top')">Top</button>
+    <button class="btn" onclick="open('left')">Left</button>
+    <button class="btn" onclick="open('right')">Right</button>
+  </div>
+  <div class="overlay" id="overlay" onclick="close()"></div>
+  <div class="drawer" id="drawer" role="dialog" aria-modal="true">
+    <div class="handle" id="handle"><div class="handle-bar"></div></div>
+    <h2 class="title" id="drawer-title"></h2>
+    <p class="desc" id="drawer-desc"></p>
+    <div class="body">Supports any content including forms, lists, or rich media.</div>
+    <button class="close-btn" onclick="close()">Close</button>
+  </div>
+  <script>
+    var current = '';
+    function open(dir) {
+      current = dir;
+      var d = document.getElementById('drawer');
+      d.className = 'drawer ' + dir;
+      document.getElementById('drawer-title').textContent = 'Drawer — ' + dir;
+      document.getElementById('drawer-desc').textContent = 'Slides in from the ' + dir + '.';
+      document.getElementById('handle').style.display = (dir === 'bottom' || dir === 'top') ? 'flex' : 'none';
+      document.getElementById('overlay').classList.add('open');
+    }
+    function close() {
+      document.getElementById('overlay').classList.remove('open');
+      document.getElementById('drawer').className = 'drawer';
+    }
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+  </script>
+</body>
+</html>

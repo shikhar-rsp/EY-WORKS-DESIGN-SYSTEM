@@ -1,0 +1,40 @@
+<style>
+  .toast-container { position: fixed; bottom: 16px; right: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; pointer-events: none; }
+  .toast-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 8px; border-radius: var(--radius-medium);
+    box-shadow: 0px 0px 1px rgba(30,31,33,0.31), 0px 1px 1px rgba(30,31,33,0.25);
+    width: 320px; pointer-events: all;
+    animation: toast-slide-in 0.2s ease-out;
+  }
+  @keyframes toast-slide-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .toast-msg { flex: 1; font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500; color: var(--foreground); }
+  .toast-close { background: none; border: none; cursor: pointer; color: var(--subtlest); font-size: 16px; padding: 2px 4px; border-radius: 4px; }
+  .trigger-btn {
+    padding: 8px 16px; border-radius: var(--radius-medium);
+    border: 1px solid var(--border); background: var(--background);
+    font-family: var(--font-lexend), sans-serif; font-size: 14px; color: var(--foreground); cursor: pointer;
+  }
+</style>
+<div id="toastContainer" class="toast-container"></div>
+<button class="trigger-btn" onclick="runPromise()">toast.promise()</button>
+<script>
+function showToast(message, bg) {
+  var container = document.getElementById('toastContainer');
+  var item = document.createElement('div');
+  item.className = 'toast-item';
+  item.style.background = bg;
+  item.innerHTML = '<span class="toast-msg">' + message + '</span>'
+    + '<button class="toast-close" onclick="this.parentNode.remove()">&times;</button>';
+  container.appendChild(item);
+  return item;
+}
+function runPromise() {
+  var loadingItem = showToast('Saving changes\u2026', '#d7e8ff');
+  setTimeout(function() {
+    if (loadingItem.parentNode) loadingItem.remove();
+    var doneItem = showToast('Changes saved!', '#ecfccb');
+    setTimeout(function() { if (doneItem.parentNode) doneItem.remove(); }, 4000);
+  }, 2000);
+}
+</script>

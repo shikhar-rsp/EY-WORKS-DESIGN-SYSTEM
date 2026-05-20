@@ -1,0 +1,81 @@
+<!-- Calendar range — see React tab for the interactive version -->
+<!-- The range calendar extends the single calendar with from/to highlight logic -->
+<div
+  style="
+    display: inline-block;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--border);
+    background: var(--background);
+    padding: 12px;
+    font-family: var(--font-lexend, sans-serif);
+    font-size: 14px;
+  "
+>
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+    <button onclick="rangePrev()" style="width: 28px; height: 28px; border-radius: var(--radius-small); border: 1px solid var(--border); background: transparent; cursor: pointer; color: var(--foreground);">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <span id="range-caption" style="font-weight: 600; color: var(--foreground);"></span>
+    <button onclick="rangeNext()" style="width: 28px; height: 28px; border-radius: var(--radius-small); border: 1px solid var(--border); background: transparent; cursor: pointer; color: var(--foreground);">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+  <div id="range-weekdays" style="display: grid; grid-template-columns: repeat(7, 32px); gap: 2px; margin-bottom: 4px;"></div>
+  <div id="range-grid" style="display: grid; grid-template-columns: repeat(7, 32px); gap: 2px;"></div>
+  <p id="range-label" style="margin-top: 8px; font-size: 12px; color: var(--muted-foreground);"></p>
+</div>
+
+<style>
+  .range-in { background: var(--primary-muted, #fde8e4) !important; border-radius: 0 !important; }
+  .range-end-start { background: var(--primary) !important; color: var(--primary-foreground) !important; border-radius: 4px !important; }
+</style>
+
+<script>
+  const RMONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const RDAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+  let rYear = 2024, rMonth = 9, rFrom = 10, rTo = 18;
+
+  function renderRange() {
+    document.getElementById('range-caption').textContent = RMONTHS[rMonth] + ' ' + rYear;
+
+    const wk = document.getElementById('range-weekdays');
+    wk.innerHTML = '';
+    RDAYS.forEach(d => {
+      const el = document.createElement('div');
+      el.style.cssText = 'text-align:center;font-size:12px;color:var(--muted-foreground);padding:4px 0;font-weight:500;';
+      el.textContent = d;
+      wk.appendChild(el);
+    });
+
+    const grid = document.getElementById('range-grid');
+    grid.innerHTML = '';
+    const first = new Date(rYear, rMonth, 1).getDay();
+    const dim = new Date(rYear, rMonth + 1, 0).getDate();
+    for (let i = 0; i < first; i++) grid.appendChild(document.createElement('div'));
+
+    for (let d = 1; d <= dim; d++) {
+      const btn = document.createElement('button');
+      const isFrom = d === rFrom, isTo = d === rTo;
+      const inRange = d > rFrom && d < rTo;
+      btn.style.cssText = `width:32px;height:32px;border:none;font-size:13px;cursor:pointer;
+        border-radius:${isFrom || isTo ? '4px' : inRange ? '0' : '4px'};
+        background:${isFrom || isTo ? 'var(--primary)' : inRange ? 'var(--primary-subtle,#fde8e4)' : 'transparent'};
+        color:${isFrom || isTo ? 'var(--primary-foreground)' : 'var(--foreground)'};`;
+      btn.textContent = d;
+      btn.onclick = () => {
+        if (!rFrom || (rFrom && rTo)) { rFrom = d; rTo = null; }
+        else if (d < rFrom) { rTo = rFrom; rFrom = d; }
+        else { rTo = d; }
+        document.getElementById('range-label').textContent = rTo ? `Range: ${rFrom} – ${rTo}` : `From: ${rFrom}`;
+        renderRange();
+      };
+      grid.appendChild(btn);
+    }
+    document.getElementById('range-label').textContent = `Range: Oct ${rFrom} – Oct ${rTo}`;
+  }
+
+  function rangePrev() { rMonth--; if (rMonth < 0) { rMonth = 11; rYear--; } renderRange(); }
+  function rangeNext() { rMonth++; if (rMonth > 11) { rMonth = 0; rYear++; } renderRange(); }
+
+  renderRange();
+</script>

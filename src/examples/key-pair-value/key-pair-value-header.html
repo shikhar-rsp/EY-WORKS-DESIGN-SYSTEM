@@ -1,0 +1,96 @@
+<style>
+  .kpv-section { display: flex; flex-direction: column; gap: 4px; }
+  .kpv-header {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .kpv-header-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--subtlest, #ada5a5);
+  }
+  .kpv-header-label {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--subtlest, #ada5a5);
+    white-space: nowrap;
+  }
+  .kpv-list { display: flex; flex-direction: column; border-top: 1px solid var(--border, #ebe9e8); margin-top: 8px; }
+  .kpv-row {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--border, #ebe9e8);
+  }
+  .kpv-key {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--subtlest, #ada5a5);
+    flex-shrink: 0;
+    min-width: 100px;
+  }
+  .kpv-value {
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--foreground, #2e2b2b);
+  }
+</style>
+
+<div style="display:flex;flex-direction:column;gap:24px;padding:24px;width:100%;max-width:576px;">
+  <!-- Header as section label -->
+  <div class="kpv-section">
+    <p style="font-family:'Lexend',sans-serif;font-size:12px;color:var(--muted-foreground,#7a7272);margin:0 0 8px;">Header as section label</p>
+    <div class="kpv-header">
+      <span class="kpv-header-label">Personal Information</span>
+    </div>
+    <div class="kpv-list">
+      <div class="kpv-row">
+        <span class="kpv-key">Full Name</span>
+        <span class="kpv-value">Alice Johnson</span>
+      </div>
+      <div class="kpv-row" style="border-bottom:none;">
+        <span class="kpv-key">Email</span>
+        <span class="kpv-value">alice@example.com</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header with icon -->
+  <div class="kpv-section">
+    <p style="font-family:'Lexend',sans-serif;font-size:12px;color:var(--muted-foreground,#7a7272);margin:0 0 8px;">Header with icon</p>
+    <div class="kpv-header">
+      <span class="kpv-header-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 12C20 16.4183 16.4183 20 12 20C7.58172 20 4 16.4183 4 12C4 7.58172 7.58172 4 12 4C16.4183 4 20 7.58172 20 12Z" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M12 4V2M12 22V20M4 12H2M22 12H20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+      </span>
+      <span class="kpv-header-label">Synced Data</span>
+    </div>
+    <div class="kpv-list">
+      <div class="kpv-row">
+        <span class="kpv-key">Last Sync</span>
+        <span class="kpv-value">2 minutes ago</span>
+      </div>
+      <div class="kpv-row" style="border-bottom:none;">
+        <span class="kpv-key">Records</span>
+        <span class="kpv-value">1,284</span>
+      </div>
+    </div>
+  </div>
+</div>

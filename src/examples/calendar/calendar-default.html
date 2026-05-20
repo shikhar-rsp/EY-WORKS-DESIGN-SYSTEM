@@ -1,0 +1,87 @@
+<!-- Calendar component — see React tab for the interactive version -->
+<!-- HTML implementation would require significant JS for full month-grid rendering -->
+<div
+  style="
+    display: inline-block;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--border);
+    background: var(--background);
+    padding: 12px;
+    font-family: var(--font-lexend, sans-serif);
+    font-size: 14px;
+    user-select: none;
+  "
+>
+  <!-- Caption -->
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+    <button id="cal-prev" onclick="calPrev()" style="display: flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: var(--radius-small); border: 1px solid var(--border); background: transparent; cursor: pointer; color: var(--foreground);">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+    <span id="cal-caption" style="font-weight: 600; color: var(--foreground);"></span>
+    <button id="cal-next" onclick="calNext()" style="display: flex; width: 28px; height: 28px; align-items: center; justify-content: center; border-radius: var(--radius-small); border: 1px solid var(--border); background: transparent; cursor: pointer; color: var(--foreground);">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+  </div>
+
+  <!-- Weekday headers -->
+  <div id="cal-weekdays" style="display: grid; grid-template-columns: repeat(7, 32px); gap: 2px; margin-bottom: 4px;"></div>
+
+  <!-- Day grid -->
+  <div id="cal-grid" style="display: grid; grid-template-columns: repeat(7, 32px); gap: 2px;"></div>
+</div>
+
+<script>
+  const MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DAYS = ['Su','Mo','Tu','We','Th','Fr','Sa'];
+
+  let calYear = new Date().getFullYear();
+  let calMonth = new Date().getMonth();
+  let selectedDay = null;
+  const today = new Date();
+
+  function renderCal() {
+    document.getElementById('cal-caption').textContent = MONTHS[calMonth] + ' ' + calYear;
+
+    const weekdays = document.getElementById('cal-weekdays');
+    weekdays.innerHTML = '';
+    DAYS.forEach(d => {
+      const el = document.createElement('div');
+      el.style.cssText = 'text-align: center; font-size: 12px; color: var(--muted-foreground); padding: 4px 0; font-weight: 500;';
+      el.textContent = d;
+      weekdays.appendChild(el);
+    });
+
+    const grid = document.getElementById('cal-grid');
+    grid.innerHTML = '';
+
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+
+    // Leading empty cells
+    for (let i = 0; i < firstDay; i++) {
+      grid.appendChild(document.createElement('div'));
+    }
+
+    // Day cells
+    for (let d = 1; d <= daysInMonth; d++) {
+      const btn = document.createElement('button');
+      const isToday = today.getFullYear() === calYear && today.getMonth() === calMonth && today.getDate() === d;
+      const isSelected = selectedDay && selectedDay.year === calYear && selectedDay.month === calMonth && selectedDay.day === d;
+      btn.style.cssText = `
+        width: 32px; height: 32px; border-radius: var(--radius-small); border: none;
+        background: ${isSelected ? 'var(--primary)' : isToday ? 'var(--muted)' : 'transparent'};
+        color: ${isSelected ? 'var(--primary-foreground)' : 'var(--foreground)'};
+        font-weight: ${isToday ? '700' : '400'};
+        font-size: 13px; cursor: pointer;
+      `;
+      btn.textContent = d;
+      btn.onclick = () => { selectedDay = { year: calYear, month: calMonth, day: d }; renderCal(); };
+      grid.appendChild(btn);
+    }
+  }
+
+  function calPrev() { calMonth--; if (calMonth < 0) { calMonth = 11; calYear--; } renderCal(); }
+  function calNext() { calMonth++; if (calMonth > 11) { calMonth = 0; calYear++; } renderCal(); }
+
+  renderCal();
+</script>

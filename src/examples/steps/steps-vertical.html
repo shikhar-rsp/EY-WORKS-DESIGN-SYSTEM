@@ -1,0 +1,122 @@
+<!-- Steps – Vertical (current step = 2) -->
+<div style="width: 100%; max-width: 320px; padding: 24px; font-family: var(--font-lexend, 'Lexend', sans-serif);">
+  <div
+    data-slot="steps"
+    data-orientation="vertical"
+    style="display: flex; flex-direction: column; gap: 0;"
+  >
+
+    <!-- Step 1 – complete -->
+    <div
+      data-slot="steps-item"
+      data-state="complete"
+      style="display: flex; flex-direction: column;"
+    >
+      <div style="display: flex; align-items: flex-start; gap: 12px;">
+        <button
+          type="button"
+          data-slot="steps-indicator"
+          data-state="complete"
+          style="
+            display: flex; flex-shrink: 0; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 9999px;
+            border: 2px solid var(--primary, #f8785e);
+            background: var(--primary, #f8785e);
+            color: var(--primary-foreground, #ffffff);
+            font-family: var(--font-lexend, 'Lexend', sans-serif);
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            position: relative; z-index: 10; transition: opacity 0.15s;
+          "
+          onmouseover="this.style.opacity='0.85'"
+          onmouseout="this.style.opacity='1'"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+        <div data-slot="steps-content" style="padding-left: 12px; padding-bottom: 16px;">
+          <p data-slot="steps-title" data-state="complete" style="font-family: var(--font-lexend, 'Lexend', sans-serif); font-size: 14px; font-weight: 500; line-height: 1; color: var(--foreground, #2e2b2b); margin: 0;">Account</p>
+          <p data-slot="steps-description" style="margin-top: 4px; font-family: var(--font-lexend, 'Lexend', sans-serif); font-size: 12px; color: var(--muted-foreground, #7a7272); margin-bottom: 0;">Create your account</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Separator -->
+    <div
+      data-slot="steps-separator"
+      aria-hidden="true"
+      style="width: 2px; height: 24px; margin-left: 15px; background: var(--border, #ebe9e8); transition: background 0.2s;"
+    ></div>
+
+    <!-- Step 2 – current -->
+    <div
+      data-slot="steps-item"
+      data-state="current"
+      style="display: flex; flex-direction: column;"
+    >
+      <div style="display: flex; align-items: flex-start; gap: 12px;">
+        <button
+          type="button"
+          data-slot="steps-indicator"
+          data-state="current"
+          aria-current="step"
+          style="
+            display: flex; flex-shrink: 0; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 9999px;
+            border: 2px solid var(--primary, #f8785e);
+            background: var(--background, #ffffff);
+            color: var(--primary, #f8785e);
+            font-family: var(--font-lexend, 'Lexend', sans-serif);
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            position: relative; z-index: 10; transition: opacity 0.15s;
+          "
+          onmouseover="this.style.opacity='0.85'"
+          onmouseout="this.style.opacity='1'"
+        >2</button>
+        <div data-slot="steps-content" style="padding-left: 12px; padding-bottom: 16px;">
+          <p data-slot="steps-title" data-state="current" style="font-family: var(--font-lexend, 'Lexend', sans-serif); font-size: 14px; font-weight: 500; line-height: 1; color: var(--foreground, #2e2b2b); margin: 0;">Billing</p>
+          <p data-slot="steps-description" style="margin-top: 4px; font-family: var(--font-lexend, 'Lexend', sans-serif); font-size: 12px; color: var(--muted-foreground, #7a7272); margin-bottom: 0;">Add payment method</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Separator -->
+    <div
+      data-slot="steps-separator"
+      aria-hidden="true"
+      style="width: 2px; height: 24px; margin-left: 15px; background: var(--border, #ebe9e8); transition: background 0.2s;"
+    ></div>
+
+    <!-- Step 3 – upcoming -->
+    <div
+      data-slot="steps-item"
+      data-state="upcoming"
+      style="display: flex; flex-direction: column;"
+    >
+      <div style="display: flex; align-items: flex-start; gap: 12px;">
+        <button
+          type="button"
+          data-slot="steps-indicator"
+          data-state="upcoming"
+          style="
+            display: flex; flex-shrink: 0; align-items: center; justify-content: center;
+            width: 32px; height: 32px; border-radius: 9999px;
+            border: 2px solid var(--border, #ebe9e8);
+            background: var(--background, #ffffff);
+            color: var(--muted-foreground, #7a7272);
+            font-family: var(--font-lexend, 'Lexend', sans-serif);
+            font-size: 14px; font-weight: 600; cursor: pointer;
+            position: relative; z-index: 10; transition: opacity 0.15s;
+          "
+          onmouseover="this.style.opacity='0.85'"
+          onmouseout="this.style.opacity='1'"
+        >3</button>
+        <div data-slot="steps-content" style="padding-left: 12px; padding-bottom: 16px;">
+          <p data-slot="steps-title" data-state="upcoming" style="font-family: var(--font-lexend, 'Lexend', sans-serif); font-size: 14px; font-weight: 500; line-height: 1; color: var(--muted-foreground, #7a7272); margin: 0;">Confirm</p>
+          <p data-slot="steps-description" style="margin-top: 4px; font-family: var(--font-lexend, 'Lexend', sans-serif); font-size: 12px; color: var(--muted-foreground, #7a7272); margin-bottom: 0;">Review and confirm</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<!-- Input Group with Button -->
+<div
+  class="input-group"
+  role="group"
+  style="
+    display: flex;
+    align-items: center;
+    width: 256px;
+    height: 36px;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--border-input);
+    background: var(--background);
+    transition: box-shadow 150ms, border-color 150ms;
+    outline: none;
+    overflow: hidden;
+  "
+>
+  <input
+    placeholder="Paste or type URL…"
+    style="
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      background: transparent;
+      padding: 4px 12px;
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 14px;
+      color: var(--foreground);
+      border: 0;
+      outline: none;
+    "
+  />
+  <button
+    type="button"
+    style="
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      padding: 0 12px;
+      margin: 2px;
+      border-radius: var(--radius-medium);
+      background: var(--primary);
+      color: var(--primary-foreground);
+      font-family: var(--font-lexend), sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      border: none;
+      cursor: pointer;
+      flex-shrink: 0;
+      transition: background 150ms;
+    "
+  >
+    Copy
+  </button>
+</div>

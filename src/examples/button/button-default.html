@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Button Default</title>
+</head>
+<body>
+  <button
+    style="
+      display: inline-flex; height: 36px; align-items: center; justify-content: center;
+      padding: 0 var(--space-200); border: 1px solid transparent;
+      border-radius: var(--radius-medium); background: var(--primary);
+      color: var(--primary-foreground); font-family: var(--font-lexend), sans-serif;
+      font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s;
+    "
+    onmouseover="this.style.background='var(--primary-hover)'"
+    onmouseout="this.style.background='var(--primary)'"
+  >
+    Click me
+  </button>
+</body>
+</html>

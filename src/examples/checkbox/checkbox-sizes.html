@@ -1,0 +1,129 @@
+<div style="display: flex; align-items: center; gap: 24px;">
+
+  <!-- Small -->
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <label
+      onclick="
+        var box = this.querySelector('.cb-box');
+        var icon = this.querySelector('.cb-icon');
+        var checked = box.dataset.checked === 'true';
+        checked = !checked;
+        box.dataset.checked = checked;
+        if (checked) {
+          box.style.background = 'var(--color-bg-brand-bold)';
+          box.style.border = 'none';
+          icon.style.display = 'flex';
+        } else {
+          box.style.background = 'var(--background)';
+          box.style.border = '1px solid var(--color-border-input)';
+          icon.style.display = 'none';
+        }
+      "
+      style="display: inline-flex; align-items: center; cursor: pointer;"
+    >
+      <span
+        class="cb-box"
+        data-checked="true"
+        style="
+          display: inline-flex; align-items: center; justify-content: center;
+          width: 14px; height: 14px;
+          border-radius: var(--radius-xsmall);
+          background: var(--color-bg-brand-bold);
+          border: none; flex-shrink: 0;
+        "
+      >
+        <span class="cb-icon" style="display: flex; color: var(--color-icon-inverse);">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5L4 7.5L8 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </span>
+    </label>
+    <span style="font-family: 'Lexend', sans-serif; font-size: 11px; color: var(--color-text-subtlest);">Small</span>
+  </div>
+
+  <!-- Medium -->
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <label
+      onclick="
+        var box = this.querySelector('.cb-box');
+        var icon = this.querySelector('.cb-icon');
+        var checked = box.dataset.checked === 'true';
+        checked = !checked;
+        box.dataset.checked = checked;
+        if (checked) {
+          box.style.background = 'var(--color-bg-brand-bold)';
+          box.style.border = 'none';
+          icon.style.display = 'flex';
+        } else {
+          box.style.background = 'var(--background)';
+          box.style.border = '1px solid var(--color-border-input)';
+          icon.style.display = 'none';
+        }
+      "
+      style="display: inline-flex; align-items: center; cursor: pointer;"
+    >
+      <span
+        class="cb-box"
+        data-checked="true"
+        style="
+          display: inline-flex; align-items: center; justify-content: center;
+          width: 16px; height: 16px;
+          border-radius: var(--radius-xsmall);
+          background: var(--color-bg-brand-bold);
+          border: none; flex-shrink: 0;
+        "
+      >
+        <span class="cb-icon" style="display: flex; color: var(--color-icon-inverse);">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5L4 7.5L8 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </span>
+    </label>
+    <span style="font-family: 'Lexend', sans-serif; font-size: 11px; color: var(--color-text-subtlest);">Medium</span>
+  </div>
+
+  <!-- Large -->
+  <div style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+    <label
+      onclick="
+        var box = this.querySelector('.cb-box');
+        var icon = this.querySelector('.cb-icon');
+        var checked = box.dataset.checked === 'true';
+        checked = !checked;
+        box.dataset.checked = checked;
+        if (checked) {
+          box.style.background = 'var(--color-bg-brand-bold)';
+          box.style.border = 'none';
+          icon.style.display = 'flex';
+        } else {
+          box.style.background = 'var(--background)';
+          box.style.border = '1px solid var(--color-border-input)';
+          icon.style.display = 'none';
+        }
+      "
+      style="display: inline-flex; align-items: center; cursor: pointer;"
+    >
+      <span
+        class="cb-box"
+        data-checked="true"
+        style="
+          display: inline-flex; align-items: center; justify-content: center;
+          width: 20px; height: 20px;
+          border-radius: var(--radius-xsmall);
+          background: var(--color-bg-brand-bold);
+          border: none; flex-shrink: 0;
+        "
+      >
+        <span class="cb-icon" style="display: flex; color: var(--color-icon-inverse);">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 5L4 7.5L8 2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </span>
+    </label>
+    <span style="font-family: 'Lexend', sans-serif; font-size: 11px; color: var(--color-text-subtlest);">Large</span>
+  </div>
+
+</div>

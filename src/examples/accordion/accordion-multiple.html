@@ -1,0 +1,134 @@
+<div style="width: 100%; max-width: 448px; padding: 24px;">
+  <div style="width: 100%;">
+
+    <!-- Item 1 (open by default) -->
+    <div id="m-item-1" data-state="open" style="border-bottom: 1px solid var(--border);">
+      <h3 style="display: flex; margin: 0;">
+        <button
+          type="button"
+          aria-expanded="true"
+          aria-controls="m-content-1"
+          data-state="open"
+          onclick="toggleMultiple('1')"
+          style="
+            display: flex; flex: 1; align-items: center; justify-content: space-between;
+            gap: var(--space-200); padding: var(--space-200) 0;
+            font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500;
+            color: var(--foreground); background: none; border: none; cursor: pointer; text-align: left;
+          "
+        >
+          Can I open multiple at once?
+          <svg id="m-chevron-1" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            style="color: var(--foreground); flex-shrink: 0; transition: transform 0.2s; transform: rotate(180deg);">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </h3>
+      <div id="m-content-1" role="region" style="overflow: hidden;">
+        <div style="padding-bottom: var(--space-200); font-family: var(--font-lexend), sans-serif; font-size: 14px; color: var(--secondary-foreground);">
+          Yes. Use <code>type="multiple"</code> to allow multiple items to be open simultaneously.
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 2 -->
+    <div id="m-item-2" data-state="closed" style="border-bottom: 1px solid var(--border);">
+      <h3 style="display: flex; margin: 0;">
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-controls="m-content-2"
+          data-state="closed"
+          onclick="toggleMultiple('2')"
+          style="
+            display: flex; flex: 1; align-items: center; justify-content: space-between;
+            gap: var(--space-200); padding: var(--space-200) 0;
+            font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500;
+            color: var(--foreground); background: none; border: none; cursor: pointer; text-align: left;
+          "
+        >
+          Does it support default open items?
+          <svg id="m-chevron-2" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            style="color: var(--foreground); flex-shrink: 0; transition: transform 0.2s;">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </h3>
+      <div id="m-content-2" role="region" style="overflow: hidden; max-height: 0; transition: max-height 0.2s ease-out;">
+        <div style="padding-bottom: var(--space-200); font-family: var(--font-lexend), sans-serif; font-size: 14px; color: var(--secondary-foreground);">
+          Yes. Pass an array to <code>defaultValue</code> to set which items are open by default.
+        </div>
+      </div>
+    </div>
+
+    <!-- Item 3 -->
+    <div id="m-item-3" data-state="closed">
+      <h3 style="display: flex; margin: 0;">
+        <button
+          type="button"
+          aria-expanded="false"
+          aria-controls="m-content-3"
+          data-state="closed"
+          onclick="toggleMultiple('3')"
+          style="
+            display: flex; flex: 1; align-items: center; justify-content: space-between;
+            gap: var(--space-200); padding: var(--space-200) 0;
+            font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500;
+            color: var(--foreground); background: none; border: none; cursor: pointer; text-align: left;
+          "
+        >
+          Is the state controlled or uncontrolled?
+          <svg id="m-chevron-3" width="16" height="16" viewBox="0 0 24 24" fill="none"
+            style="color: var(--foreground); flex-shrink: 0; transition: transform 0.2s;">
+            <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </h3>
+      <div id="m-content-3" role="region" style="overflow: hidden; max-height: 0; transition: max-height 0.2s ease-out;">
+        <div style="padding-bottom: var(--space-200); font-family: var(--font-lexend), sans-serif; font-size: 14px; color: var(--secondary-foreground);">
+          Both. Use <code>defaultValue</code> for uncontrolled, or <code>value</code> + <code>onValueChange</code> for controlled state.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // Multiple-type accordion: independent per item
+  var openItems = { '1': true };
+
+  function toggleMultiple(id) {
+    if (openItems[id]) {
+      collapseItem(id);
+      delete openItems[id];
+    } else {
+      expandItem(id);
+      openItems[id] = true;
+    }
+  }
+
+  function expandItem(id) {
+    var content = document.getElementById('m-content-' + id);
+    var chevron = document.getElementById('m-chevron-' + id);
+    var item = document.getElementById('m-item-' + id);
+    var btn = item.querySelector('button');
+    content.style.maxHeight = content.scrollHeight + 'px';
+    chevron.style.transform = 'rotate(180deg)';
+    btn.setAttribute('aria-expanded', 'true');
+    btn.dataset.state = 'open';
+    item.dataset.state = 'open';
+  }
+
+  function collapseItem(id) {
+    var content = document.getElementById('m-content-' + id);
+    var chevron = document.getElementById('m-chevron-' + id);
+    var item = document.getElementById('m-item-' + id);
+    var btn = item.querySelector('button');
+    content.style.maxHeight = '0';
+    chevron.style.transform = 'rotate(0deg)';
+    btn.setAttribute('aria-expanded', 'false');
+    btn.dataset.state = 'closed';
+    item.dataset.state = 'closed';
+  }
+</script>

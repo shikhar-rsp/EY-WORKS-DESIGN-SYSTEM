@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <style>
+    body { font-family: 'Lexend', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; background: var(--background, #ffffff); }
+    .trigger-area { display: flex; align-items: center; justify-content: center; height: 128px; width: 256px; border-radius: 16px; border: 1px dashed var(--border, #ebe9e8); font-size: 14px; color: var(--muted-foreground, #7a7272); cursor: context-menu; }
+    .menu { display: none; position: fixed; z-index: 50; min-width: 160px; border-radius: 16px; border: 1px solid var(--border, #ebe9e8); background: var(--background, #ffffff); padding: 4px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); }
+    .menu.open { display: block; }
+    .menu-label { padding: 6px 12px; font-size: 12px; font-weight: 600; color: var(--muted-foreground, #7a7272); }
+    .menu-separator { margin: 4px -4px; border-top: 1px solid var(--border, #ebe9e8); }
+    .menu-item { display: flex; align-items: center; width: 100%; padding: 6px 12px; font-size: 14px; color: var(--foreground, #2e2b2b); border-radius: 4px; border: none; background: transparent; cursor: pointer; text-align: left; gap: 12px; box-sizing: border-box; font-family: inherit; }
+    .menu-item:hover, .menu-item:focus { background: var(--muted, #fafafa); outline: none; }
+    .menu-item.destructive { color: var(--destructive, #cc0000); }
+    .menu-item.destructive:hover { background: var(--destructive-subtle, #ffe5e5); }
+    .shortcut { margin-left: auto; font-size: 12px; color: var(--muted-foreground, #7a7272); letter-spacing: 0.1em; }
+  </style>
+</head>
+<body>
+  <div class="trigger-area" id="trigger">Right-click here</div>
+  <div class="menu" id="menu" role="menu">
+    <div class="menu-label">Actions</div>
+    <div class="menu-separator"></div>
+    <button class="menu-item" role="menuitem" onclick="closeMenu()">Back <span class="shortcut">⌘[</span></button>
+    <button class="menu-item" role="menuitem" onclick="closeMenu()">Forward <span class="shortcut">⌘]</span></button>
+    <button class="menu-item" role="menuitem" onclick="closeMenu()">Reload <span class="shortcut">⌘R</span></button>
+    <div class="menu-separator"></div>
+    <button class="menu-item destructive" role="menuitem" onclick="closeMenu()">Delete</button>
+  </div>
+  <script>
+    var menu = document.getElementById('menu');
+    document.getElementById('trigger').addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+      var x = Math.min(e.clientX, window.innerWidth - 180);
+      var y = Math.min(e.clientY, window.innerHeight - 200);
+      menu.style.left = x + 'px';
+      menu.style.top = y + 'px';
+      menu.classList.add('open');
+    });
+    document.addEventListener('mousedown', function(e) {
+      if (!menu.contains(e.target)) closeMenu();
+    });
+    document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeMenu(); });
+    function closeMenu() { menu.classList.remove('open'); }
+  </script>
+</body>
+</html>

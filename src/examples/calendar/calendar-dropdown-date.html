@@ -1,0 +1,47 @@
+<!-- Calendar date dropdown — fully interactive with month navigation and day selection -->
+<style>
+  .dd-wrap { display: flex; flex-direction: column; width: 280px; background: var(--background); border-radius: 6px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); overflow: hidden; font-family: var(--font-lexend, sans-serif); border: 1px solid var(--border); }
+  .dd-hdr { display: flex; align-items: center; justify-content: space-between; height: 40px; padding: 0 8px; border-bottom: 1px solid var(--border); }
+  .dd-hdr-btn { width: 28px; height: 28px; border: 1px solid var(--border); border-radius: var(--radius-small); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+  .dd-hdr-btn:hover { background: var(--muted); }
+  .dd-lbl { font-size: 13px; font-weight: 600; color: var(--foreground); }
+  .dd-wds { display: grid; grid-template-columns: repeat(7, 1fr); padding: 8px 8px 0; }
+  .dd-wd { text-align: center; font-size: 12px; color: var(--muted-foreground); padding: 4px 0; }
+  .dd-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; padding: 4px 8px 8px; }
+  .dd-day { height: 36px; border: none; border-radius: var(--radius-small); background: transparent; color: var(--foreground); font-size: 13px; cursor: pointer; }
+  .dd-day:hover { background: var(--muted-hover); }
+  .dd-day.today { background: var(--muted); font-weight: 700; }
+  .dd-day.selected { background: var(--primary); color: var(--primary-foreground); font-weight: 600; }
+</style>
+<div class="dd-wrap" id="dd1">
+  <div class="dd-hdr">
+    <button class="dd-hdr-btn" onclick="dd1Nav(-1)">&#8249;</button>
+    <span class="dd-lbl" id="dd1-lbl"></span>
+    <button class="dd-hdr-btn" onclick="dd1Nav(1)">&#8250;</button>
+  </div>
+  <div class="dd-wds" id="dd1-wd"></div>
+  <div class="dd-grid" id="dd1-grid"></div>
+</div>
+<script>
+  const MONTHS_DD1=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const DAYS_DD1=['Su','Mo','Tu','We','Th','Fr','Sa'];
+  const todayDD1=new Date();
+  let dd1Y=2021,dd1M=9,dd1Sel=null;
+  function dd1Render(){
+    document.getElementById('dd1-lbl').textContent=MONTHS_DD1[dd1M]+'  '+dd1Y;
+    const wd=document.getElementById('dd1-wd');wd.innerHTML='';
+    DAYS_DD1.forEach(d=>{const el=document.createElement('div');el.className='dd-wd';el.textContent=d;wd.appendChild(el);});
+    const grid=document.getElementById('dd1-grid');grid.innerHTML='';
+    const first=new Date(dd1Y,dd1M,1).getDay(),dim=new Date(dd1Y,dd1M+1,0).getDate();
+    for(let i=0;i<first;i++)grid.appendChild(document.createElement('div'));
+    for(let d=1;d<=dim;d++){
+      const btn=document.createElement('button');btn.className='dd-day';
+      const isT=todayDD1.getFullYear()===dd1Y&&todayDD1.getMonth()===dd1M&&todayDD1.getDate()===d;
+      if(isT)btn.classList.add('today');if(dd1Sel===d)btn.classList.add('selected');
+      btn.textContent=d;btn.onclick=()=>{dd1Sel=d;dd1Render();};
+      grid.appendChild(btn);
+    }
+  }
+  function dd1Nav(dir){dd1M+=dir;if(dd1M<0){dd1M=11;dd1Y--;}if(dd1M>11){dd1M=0;dd1Y++;}dd1Render();}
+  dd1Render();
+</script>

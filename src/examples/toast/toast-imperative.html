@@ -1,0 +1,44 @@
+<style>
+  .toast-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .toast-container { position: fixed; bottom: 16px; right: 16px; display: flex; flex-direction: column; gap: 8px; z-index: 9999; pointer-events: none; }
+  .toast-item {
+    display: flex; align-items: center; gap: 16px;
+    padding: 8px; border-radius: var(--radius-medium);
+    box-shadow: 0px 0px 1px rgba(30,31,33,0.31), 0px 1px 1px rgba(30,31,33,0.25);
+    width: 320px; pointer-events: all;
+    animation: toast-slide-in 0.2s ease-out;
+  }
+  @keyframes toast-slide-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+  .toast-success { background: #ecfccb; }
+  .toast-error   { background: #ffcccc; }
+  .toast-info    { background: #d7e8ff; }
+  .toast-warning { background: #fde8d9; }
+  .toast-msg { flex: 1; font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500; color: var(--foreground); }
+  .toast-close { background: none; border: none; cursor: pointer; color: var(--subtlest); font-size: 16px; line-height: 1; padding: 2px 4px; border-radius: 4px; }
+  .imp-btn {
+    padding: 8px 16px; border-radius: var(--radius-medium); border: none; cursor: pointer;
+    font-family: var(--font-lexend), sans-serif; font-size: 14px; font-weight: 500;
+  }
+  .imp-btn-success { background: #65a30d; color: #ffffff; }
+  .imp-btn-error   { background: #cc0000; color: #ffffff; }
+  .imp-btn-info    { background: #2d70cf; color: #ffffff; }
+  .imp-btn-warning { background: #d97706; color: #ffffff; }
+</style>
+<div id="toastContainer" class="toast-container"></div>
+<div class="toast-wrap">
+  <button class="imp-btn imp-btn-success" onclick="showToast('Profile updated successfully.', 'success')">toast.success()</button>
+  <button class="imp-btn imp-btn-error"   onclick="showToast('Failed to save changes.', 'error')">toast.error()</button>
+  <button class="imp-btn imp-btn-info"    onclick="showToast('A new version is available.', 'info')">toast.info()</button>
+  <button class="imp-btn imp-btn-warning" onclick="showToast('Your session expires in 5 minutes.', 'warning')">toast.warning()</button>
+</div>
+<script>
+function showToast(message, type) {
+  var container = document.getElementById('toastContainer');
+  var item = document.createElement('div');
+  item.className = 'toast-item toast-' + type;
+  item.innerHTML = '<span class="toast-msg">' + message + '</span>'
+    + '<button class="toast-close" onclick="this.parentNode.remove()">&times;</button>';
+  container.appendChild(item);
+  setTimeout(function() { if (item.parentNode) item.remove(); }, 4000);
+}
+</script>

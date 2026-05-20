@@ -1,0 +1,32 @@
+<!-- Calendar year picker — click a year to select, use arrows to change decade -->
+<style>
+  .dy-wrap { display: flex; flex-direction: column; width: 280px; background: var(--background); border-radius: 6px; box-shadow: 0 8px 16px rgba(0,0,0,0.15); overflow: hidden; font-family: var(--font-lexend, sans-serif); border: 1px solid var(--border); }
+  .dy-hdr { display: flex; align-items: center; justify-content: space-between; height: 40px; padding: 0 8px; border-bottom: 1px solid var(--border); }
+  .dy-hdr-btn { width: 28px; height: 28px; border: 1px solid var(--border); border-radius: var(--radius-small); background: transparent; cursor: pointer; }
+  .dy-hdr-btn:hover { background: var(--muted); }
+  .dy-lbl { font-size: 13px; font-weight: 600; color: var(--foreground); }
+  .dy-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px 8px; padding: 16px; }
+  .dy-cell { height: 36px; border: 1px solid var(--border); border-radius: var(--radius-small); background: transparent; color: var(--foreground); font-size: 13px; cursor: pointer; font-family: var(--font-lexend, sans-serif); }
+  .dy-cell:hover { background: var(--muted-hover); }
+  .dy-cell.out { color: var(--muted-foreground); border-color: transparent; }
+  .dy-cell.selected { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); font-weight: 600; }
+</style>
+<div class="dy-wrap">
+  <div class="dy-hdr">
+    <button class="dy-hdr-btn" onclick="dyNav(-10)">&#8249;</button>
+    <span class="dy-lbl" id="dy-lbl"></span>
+    <button class="dy-hdr-btn" onclick="dyNav(10)">&#8250;</button>
+  </div>
+  <div class="dy-grid" id="dy-grid"></div>
+</div>
+<script>
+  let dyDec=2020,dySel=2021;
+  function dyRender(){
+    document.getElementById('dy-lbl').textContent=dyDec+'-'+(dyDec+9);
+    const grid=document.getElementById('dy-grid');grid.innerHTML='';
+    const cells=[dyDec-1,...Array.from({length:10},(_,i)=>dyDec+i),dyDec+10];
+    cells.forEach((y,i)=>{const btn=document.createElement('button');btn.className='dy-cell'+(y===dySel?' selected':(i===0||i===11?' out':''));btn.textContent=y;btn.onclick=()=>{if(i!==0&&i!==11){dySel=y;dyRender();}};grid.appendChild(btn);});
+  }
+  function dyNav(dir){dyDec+=dir;dyRender();}
+  dyRender();
+</script>

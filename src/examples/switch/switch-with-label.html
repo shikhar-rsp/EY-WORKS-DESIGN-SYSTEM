@@ -1,0 +1,45 @@
+<style>
+  .switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    width: 36px;
+    height: 20px;
+    border-radius: 9999px;
+    border: 2px solid transparent;
+    background: var(--muted-active);
+    cursor: pointer;
+    transition: background 200ms ease-in-out;
+  }
+  .switch[aria-checked="true"] { background: var(--primary); }
+  .switch-thumb {
+    display: block;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: var(--primary-foreground);
+    transform: translateX(0);
+    transition: transform 200ms ease-in-out;
+    pointer-events: none;
+  }
+  .switch[aria-checked="true"] .switch-thumb { transform: translateX(16px); }
+</style>
+
+<div style="display: flex; align-items: center; gap: 8px;">
+  <button
+    id="notifications"
+    class="switch"
+    type="button"
+    role="switch"
+    aria-checked="false"
+    onclick="this.setAttribute('aria-checked', this.getAttribute('aria-checked') === 'true' ? 'false' : 'true')"
+  >
+    <span class="switch-thumb"></span>
+  </button>
+  <label
+    for="notifications"
+    style="font-size: 14px; color: var(--foreground); cursor: pointer; font-family: var(--font-lexend, sans-serif);"
+  >
+    Enable notifications
+  </label>
+</div>

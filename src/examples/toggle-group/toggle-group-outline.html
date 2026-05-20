@@ -1,0 +1,32 @@
+<style>
+  .tg-outline-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    height: 36px; min-width: 36px; padding: 0 var(--space-150);
+    font-family: var(--font-lexend), sans-serif; font-weight: 500; font-size: 14px;
+    background: transparent; color: var(--muted-foreground);
+    border: none; border-right: 1px solid var(--border); cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+  }
+  .tg-outline-btn:last-child { border-right: none; border-radius: 0 var(--radius-medium) var(--radius-medium) 0; }
+  .tg-outline-btn:first-child { border-radius: var(--radius-medium) 0 0 var(--radius-medium); }
+  .tg-outline-btn:hover, .tg-outline-btn[aria-checked="true"] {
+    background: var(--muted); color: var(--foreground);
+  }
+</style>
+<div role="radiogroup" style="
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--border); border-radius: var(--radius-medium); overflow: hidden;
+">
+  <button type="button" role="radio" aria-checked="false" class="tg-outline-btn"
+    onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-checked','false')); this.setAttribute('aria-checked','true');">
+    Daily
+  </button>
+  <button type="button" role="radio" aria-checked="false" class="tg-outline-btn"
+    onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-checked','false')); this.setAttribute('aria-checked','true');">
+    Weekly
+  </button>
+  <button type="button" role="radio" aria-checked="true" class="tg-outline-btn"
+    onclick="this.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-checked','false')); this.setAttribute('aria-checked','true');">
+    Monthly
+  </button>
+</div>

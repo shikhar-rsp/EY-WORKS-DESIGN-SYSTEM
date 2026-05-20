@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Credit Card Input — Default</title>
+  <style>
+    :root {
+      --background: #ffffff; --foreground: #2e2b2b;
+      --primary: #ed7855; --primary-hover: #d65c3a; --primary-active: #b14525;
+      --primary-foreground: #ffffff;
+      --secondary-foreground: #6a6373;
+      --muted-foreground: #7a7272; --placeholder: #c7c6c6;
+      --border: #ebe9e8; --ring: #ed7855;
+      --radius-medium: 8px; --radius-large: 16px; --radius-small: 6px;
+      --space-050: 4px; --space-100: 8px; --space-150: 12px; --space-200: 16px;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; padding: 24px; font-family: 'Lexend', sans-serif; background: var(--background); }
+    .ccx { display: flex; flex-direction: column; gap: var(--space-200); width: 100%; max-width: 384px; }
+    .preview {
+      position: relative; aspect-ratio: 1.586 / 1; width: 100%; overflow: hidden;
+      border-radius: var(--radius-large); padding: var(--space-200);
+      background: linear-gradient(135deg, var(--primary), var(--primary-hover) 60%, var(--primary-active));
+      color: var(--primary-foreground); box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .row { display: flex; align-items: flex-start; justify-content: space-between; }
+    .row.bottom { align-items: flex-end; gap: var(--space-200); }
+    .chip { width: 36px; height: 36px; border-radius: 6px; background: rgba(255,255,255,0.25); }
+    .brand { font-weight: 800; font-style: italic; letter-spacing: 0.05em; }
+    .number { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; font-weight: 600; letter-spacing: 0.18em; display: flex; gap: var(--space-150); flex-wrap: wrap; font-size: 1rem; }
+    .meta { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.18em; opacity: 0.7; }
+    .name { text-transform: uppercase; font-size: 0.875rem; font-weight: 500; }
+    .fields { display: flex; flex-direction: column; gap: var(--space-150); }
+    .field { display: flex; flex-direction: column; gap: var(--space-050); }
+    .label { font-size: 0.75rem; font-weight: 500; color: var(--secondary-foreground); }
+    .input {
+      height: 36px; width: 100%; border-radius: var(--radius-medium);
+      border: 1px solid var(--border); background: var(--background);
+      padding: 0 var(--space-150); font-size: 0.875rem; color: var(--foreground); outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .input::placeholder { color: var(--placeholder); }
+    .input:focus { border-color: var(--ring); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ring) 30%, transparent); }
+    .input.mono { font-family: 'Geist Mono', monospace; font-variant-numeric: tabular-nums; }
+    .grid { display: flex; gap: var(--space-150); }
+    .grid > .field { flex: 1; }
+  </style>
+</head>
+<body>
+  <div class="ccx">
+    <div class="preview">
+      <div class="row">
+        <div class="chip"></div>
+        <span class="brand">VISA</span>
+      </div>
+      <div class="number">
+        <span>••••</span><span>••••</span><span>••••</span><span>••••</span>
+      </div>
+      <div class="row bottom">
+        <div>
+          <div class="meta">Card holder</div>
+          <div class="name">FULL NAME</div>
+        </div>
+        <div style="text-align:right">
+          <div class="meta">Expires</div>
+          <div class="name" style="font-family:'Geist Mono', monospace">MM/YY</div>
+        </div>
+      </div>
+    </div>
+    <div class="fields">
+      <label class="field">
+        <span class="label">Card number</span>
+        <input class="input mono" inputmode="numeric" autocomplete="cc-number" placeholder="0000 0000 0000 0000" />
+      </label>
+      <label class="field">
+        <span class="label">Cardholder name</span>
+        <input class="input" autocomplete="cc-name" placeholder="Jane Appleseed" />
+      </label>
+      <div class="grid">
+        <label class="field">
+          <span class="label">Expiry</span>
+          <input class="input mono" inputmode="numeric" autocomplete="cc-exp" placeholder="MM/YY" />
+        </label>
+        <label class="field">
+          <span class="label">CVV</span>
+          <input class="input mono" type="password" inputmode="numeric" autocomplete="cc-csc" placeholder="•••" />
+        </label>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

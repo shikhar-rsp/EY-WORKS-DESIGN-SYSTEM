@@ -1,0 +1,43 @@
+<!-- Destructive alert variant -->
+<style>
+  .alert-destructive {
+    position: relative;
+    width: 100%;
+    max-width: 512px;
+    border-radius: var(--radius-large);
+    border: 1px solid rgba(204, 0, 0, 0.5); /* --destructive/50 */
+    padding: var(--space-200);
+    color: var(--destructive);
+    font-family: var(--font-lexend, sans-serif);
+  }
+  .alert-destructive > svg {
+    position: absolute;
+    left: var(--space-200);
+    top: var(--space-200);
+    color: var(--destructive);
+  }
+  .alert-content { padding-left: 28px; }
+  .alert-title {
+    margin-bottom: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.01em;
+  }
+  .alert-description {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+</style>
+
+<div class="alert-destructive" role="alert">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="15" y1="9" x2="9" y2="15"/>
+    <line x1="9" y1="9" x2="15" y2="15"/>
+  </svg>
+  <div class="alert-content">
+    <h5 class="alert-title">Error</h5>
+    <div class="alert-description">Your session has expired. Please log in again.</div>
+  </div>
+</div>

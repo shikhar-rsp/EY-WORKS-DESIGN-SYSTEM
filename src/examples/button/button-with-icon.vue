@@ -1,0 +1,15 @@
+<script setup lang="ts">
+</script>
+
+<template>
+  <div :style="{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '12px' }">
+    <button :style="{ display:'inline-flex', height:'36px', alignItems:'center', justifyContent:'center', gap:'8px', padding:'0 var(--space-200)', border:'1px solid transparent', borderRadius:'var(--radius-medium)', background:'var(--primary)', color:'var(--primary-foreground)', fontFamily:'var(--font-lexend),sans-serif', fontSize:'14px', fontWeight:500, cursor:'pointer' }">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 3.5C10 3.5 6 6.446 6 7.5C6 8.554 10 11.5 10 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back
+    </button>
+    <button :style="{ display:'inline-flex', height:'36px', alignItems:'center', justifyContent:'center', gap:'8px', padding:'0 var(--space-200)', border:'1px solid transparent', borderRadius:'var(--radius-medium)', background:'var(--primary)', color:'var(--primary-foreground)', fontFamily:'var(--font-lexend),sans-serif', fontSize:'14px', fontWeight:500, cursor:'pointer' }">
+      Next
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3.5C6 3.5 10 6.446 10 7.5C10 8.554 6 11.5 6 11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+</template>

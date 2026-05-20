@@ -1,0 +1,133 @@
+<style>
+  .ds-table-wrap { overflow: hidden; border-radius: var(--radius-large, 16px); border: 1px solid var(--border, #ebe9e8); width: 100%; }
+  .ds-table { width: 100%; border-collapse: collapse; }
+  .ds-th {
+    background: var(--secondary, #f4f4f4);
+    border-bottom: 1px solid var(--border, #ebe9e8);
+    height: 40px;
+    padding: 0 var(--space-200, 16px);
+    text-align: left;
+  }
+  .ds-th-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Lexend', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-foreground, #7a7272);
+    white-space: nowrap;
+  }
+  .ds-th-right { text-align: right; }
+  .ds-th-right .ds-th-label { justify-content: flex-end; }
+  .ds-td {
+    background: var(--background, #ffffff);
+    border-bottom: 1px solid var(--border, #ebe9e8);
+    height: 72px;
+    padding: var(--space-100, 8px) var(--space-200, 16px);
+    transition: background-color 150ms;
+  }
+  .ds-tr:hover .ds-td { background: var(--secondary, #f4f4f4); }
+  .ds-td-last { border-bottom: none; }
+  .ds-td-right { text-align: right; }
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--secondary, #f4f4f4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-family: 'Lexend', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted-foreground, #7a7272);
+  }
+  .user-cell { display: flex; align-items: center; gap: 12px; }
+  .user-name { font-family: 'Lexend', sans-serif; font-size: 14px; font-weight: 500; color: var(--foreground, #2e2b2b); }
+  .user-email { font-family: 'Lexend', sans-serif; font-size: 12px; color: var(--muted-foreground, #7a7272); }
+  .role-badge {
+    font-family: 'Lexend', sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: var(--radius-full, 99px);
+    display: inline-block;
+  }
+  .role-designer { background: var(--accent-blue, #d7e8ff); color: var(--info, #2d70cf); }
+  .role-engineer { background: var(--accent-lime, #ecfccb); color: var(--success, #65a30d); }
+  .role-pm { background: var(--accent-purple, #e0e3f6); color: var(--discovery, #505eac); }
+  .score { font-family: 'Lexend', sans-serif; font-size: 14px; font-weight: 600; color: var(--foreground, #2e2b2b); font-variant-numeric: tabular-nums; }
+  .trend-up { font-family: 'Lexend', sans-serif; font-size: 14px; font-weight: 500; color: var(--success, #65a30d); font-variant-numeric: tabular-nums; }
+  .trend-down { font-family: 'Lexend', sans-serif; font-size: 14px; font-weight: 500; color: var(--destructive, #cc0000); font-variant-numeric: tabular-nums; }
+</style>
+
+<div style="padding:24px;width:100%;max-width:768px;">
+  <div class="ds-table-wrap">
+    <table class="ds-table">
+      <thead>
+        <tr>
+          <th class="ds-th"><span class="ds-th-label">User</span></th>
+          <th class="ds-th"><span class="ds-th-label">Role</span></th>
+          <th class="ds-th ds-th-right">
+            <span class="ds-th-label">
+              Score
+              <svg width="7" height="7" viewBox="0 0 24 24" fill="none">
+                <path d="M12 4V20M12 4L8 8M12 4L16 8M12 20L8 16M12 20L16 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+          </th>
+          <th class="ds-th ds-th-right"><span class="ds-th-label">Trend</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ds-tr">
+          <td class="ds-td">
+            <div class="user-cell">
+              <div class="avatar">AJ</div>
+              <div>
+                <div class="user-name">Alice Johnson</div>
+                <div class="user-email">alice@example.com</div>
+              </div>
+            </div>
+          </td>
+          <td class="ds-td"><span class="role-badge role-designer">Designer</span></td>
+          <td class="ds-td ds-td-right"><span class="score">98</span></td>
+          <td class="ds-td ds-td-right"><span class="trend-up">+12%</span></td>
+        </tr>
+        <tr class="ds-tr">
+          <td class="ds-td">
+            <div class="user-cell">
+              <div class="avatar">BS</div>
+              <div>
+                <div class="user-name">Bob Smith</div>
+                <div class="user-email">bob@example.com</div>
+              </div>
+            </div>
+          </td>
+          <td class="ds-td"><span class="role-badge role-engineer">Engineer</span></td>
+          <td class="ds-td ds-td-right"><span class="score">84</span></td>
+          <td class="ds-td ds-td-right"><span class="trend-up">+5%</span></td>
+        </tr>
+        <tr class="ds-tr">
+          <td class="ds-td ds-td-last">
+            <div class="user-cell">
+              <div class="avatar">CW</div>
+              <div>
+                <div class="user-name">Carol White</div>
+                <div class="user-email">carol@example.com</div>
+              </div>
+            </div>
+          </td>
+          <td class="ds-td ds-td-last"><span class="role-badge role-pm">PM</span></td>
+          <td class="ds-td ds-td-last ds-td-right"><span class="score">72</span></td>
+          <td class="ds-td ds-td-last ds-td-right"><span class="trend-down">-3%</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

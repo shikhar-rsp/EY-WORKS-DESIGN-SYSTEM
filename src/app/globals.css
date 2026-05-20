@@ -1,0 +1,187 @@
+@import "tailwindcss";
+@import "./brand-tokens.css";
+
+/* Exclude non-source directories from Tailwind's content scanning.
+   The .claude/rules/ markdown files contain class-like patterns (e.g. bg-[var(--*)])
+   in documentation examples that produce invalid CSS when scanned.
+   The src/examples/*.html / *.vue / *.dart files are STANDALONE code samples
+   shown verbatim in <CodeBlock>; they contain inline <style>:root{...}</style>
+   blocks that would otherwise leak hardcoded hex tokens into the runtime CSS,
+   overriding brand-tokens.css. Keep them out of Tailwind's source set. */
+@source not "../../.claude/**";
+@source not "../../*.md";
+
+/* ═══════════════════════════════════════════════════════════════════
+   APP-ONLY STYLES
+   Brand tokens live in ./brand-tokens.css. Everything below is
+   docs-site / app-only CSS that is NOT part of the brand-porting surface.
+   ═══════════════════════════════════════════════════════════════════ */
+
+html,
+body {
+  overflow-x: clip;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ── Component preview scaling ──────────────────────────────── */
+/* Scaling is applied via transform: scale() in SizeSlider.tsx.
+   No CSS rule needed here — keeping the target class empty so it
+   can be used as a query selector without adding any computed style. */
+.preview-scale-target {}
+
+/* ── Font preview scoping ────────────────────────────────────── */
+.font-preview-scope {
+  --font-lexend: var(--font-preview, var(--font-lexend));
+}
+
+/* ── Color preview scoping ───────────────────────────────────── */
+/* .color-preview-scope elements are targeted by JS (applySlotColors / applyBrandColor)
+   which sets the real :root variable names directly on the element via inline style.
+   No CSS fallback rule needed — the inherited :root values pass through by default. */
+
+/* ── Size slider thumb ───────────────────────────────────────── */
+.size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+.size-slider::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+  cursor: pointer;
+}
+
+/* ── Code block — syntax token colors ───────────────────────────── */
+
+:root {
+  /* Background & base text */
+  --code-bg:           #f6f8fa;
+  --code-fg:           #1f2328;
+  /* Gutter */
+  --code-lineno-fg:    #6e7781;
+  --code-lineno-bg:    #f6f8fa;
+  --code-lineno-w:     2.5rem;
+  /* Token colors — GitHub light */
+  --code-comment:      #6e7781;
+  --code-string:       #0a3069;
+  --code-keyword:      #cf222e;
+  --code-builtin:      #953800;
+  --code-number:       #0550ae;
+  --code-tag:          #116329;
+  --code-attr:         #0550ae;
+  --code-punct:        #24292f;
+  --code-operator:     #cf222e;
+  --code-function:     #8250df;
+  --code-type:         #953800;
+}
+
+.dark {
+  /* Background & base text */
+  --code-bg:           #0d1117;
+  --code-fg:           #e6edf3;
+  /* Gutter */
+  --code-lineno-fg:    #6e7681;
+  --code-lineno-bg:    #0d1117;
+  /* Token colors — GitHub dark */
+  --code-comment:      #8b949e;
+  --code-string:       #a5d6ff;
+  --code-keyword:      #ff7b72;
+  --code-builtin:      #ffa657;
+  --code-number:       #79c0ff;
+  --code-tag:          #7ee787;
+  --code-attr:         #79c0ff;
+  --code-punct:        #e6edf3;
+  --code-operator:     #ff7b72;
+  --code-function:     #d2a8ff;
+  --code-type:         #ffa657;
+}
+
+/* ── Structural layout ───────────────────────────────────────────── */
+
+.code-block-root {
+  background: var(--code-bg);
+  color: var(--code-fg);
+  overflow: hidden;
+}
+
+/* Fixed-height scroll container — matches the shadcn panel height */
+.code-block-scroll {
+  max-height: 420px;
+  width: 0;
+  min-width: 100%;
+}
+
+.code-block-table {
+  font-size: 13px;
+  line-height: 1.65;
+  padding: 1rem 0;
+}
+
+/* Gutter cell */
+.code-block-lineno {
+  width: var(--code-lineno-w);
+  min-width: var(--code-lineno-w);
+  padding: 0 0.75rem;
+  text-align: right;
+  vertical-align: top;
+  font-size: 12px;
+  color: var(--code-lineno-fg);
+  background: var(--code-lineno-bg);
+  user-select: none;
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+}
+
+/* Code content cell */
+.code-block-linecontent {
+  padding: 0 3rem 0 1rem; /* right pad leaves room for copy button */
+  white-space: pre;
+  vertical-align: top;
+  width: 100%;
+}
+
+/* Subtle row hover */
+.code-block-line:hover .code-block-lineno {
+  color: var(--code-fg);
+}
+
+/* ── Syntax token spans ──────────────────────────────────────────── */
+.code-token-comment  { color: var(--code-comment); font-style: italic; }
+.code-token-string   { color: var(--code-string); }
+.code-token-keyword  { color: var(--code-keyword); font-weight: 500; }
+.code-token-builtin  { color: var(--code-builtin); }
+.code-token-number   { color: var(--code-number); }
+.code-token-tag      { color: var(--code-tag); }
+.code-token-attr     { color: var(--code-attr); }
+.code-token-punct    { color: var(--code-punct); }
+.code-token-operator { color: var(--code-operator); }
+.code-token-function { color: var(--code-function); }
+.code-token-type     { color: var(--code-type); }
+
+/* Chrome, Safari, Edge */
+.scrollbar-none::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+.scrollbar-none::-webkit-scrollbar-thumb {
+  background: transparent;
+}
+
+.scrollbar-none {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
