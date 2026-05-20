@@ -9,29 +9,33 @@ interface IBrandLogoProps {
 export const BrandLogo = (props: IBrandLogoProps) => (
   <>
     <span
-      aria-hidden="true"
+      aria-label="EYWorks"
+      role="img"
       className={cn(
-        "inline-flex size-6 shrink-0 items-center justify-center [&>svg]:size-full [&>svg]:h-full [&>svg]:w-full",
+        "inline-flex size-6 shrink-0 items-center justify-center [&>svg]:size-full",
         props.className,
       )}
     >
       <svg
         viewBox="0 0 32 32"
-        fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        aria-hidden="true"
       >
-        <rect x="3" y="3" width="11" height="11" rx="3" fill="currentColor" />
-        <rect x="18" y="3" width="11" height="11" rx="3" fill="currentColor" />
-        <rect x="3" y="18" width="11" height="11" rx="3" fill="currentColor" />
-        <rect
-          x="18"
-          y="18"
-          width="11"
-          height="11"
-          rx="3"
-          fill="currentColor"
-          opacity="0.4"
-        />
+        <rect width="32" height="32" rx="7" fill="#FFE600" />
+        <text
+          x="50%"
+          y="54%"
+          textAnchor="middle"
+          dominantBaseline="middle"
+          fill="#1A1A1A"
+          fontFamily="Geist, system-ui, sans-serif"
+          fontSize="18"
+          fontWeight="900"
+          fontStyle="italic"
+          letterSpacing="-0.5"
+        >
+          ey
+        </text>
       </svg>
     </span>
     {props.showText && (
@@ -41,7 +45,7 @@ export const BrandLogo = (props: IBrandLogoProps) => (
           props.textClassName,
         )}
       >
-        [Brand Name]
+        works
       </span>
     )}
   </>

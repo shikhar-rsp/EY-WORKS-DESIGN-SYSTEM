@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { CodeBlock } from "@/components/fragments/typography/CodeBlock";
 
 export const metadata: Metadata = {
-  title: "Introduction | [Brand Name] DS",
+  title: "Introduction | EYWorks DS",
   description:
-    "[Brand Name] DS is the [Brand Name] design system — open-source React components synced from Figma, styled with Tailwind CSS v4, and built to be owned and customized.",
+    "EYWorks DS is the EYWorks design system — open-source React components synced from Figma, styled with Tailwind CSS v4, and built to be owned and customized.",
 };
 
 const COPY_BUTTON_CODE = `cp src/components/figma/Button.tsx your-project/components/Button.tsx`;
@@ -25,14 +25,14 @@ const DocsPage = async () => {
         </h1>
       </div>
       <p className="leading-7 text-secondary-foreground">
-        A design system built for [Brand Name] products. Open source. Figma-synced.
+        A design system built for EYWorks products. Open source. Figma-synced.
         Built to be owned.
       </p>
 
       {/* ── Standout statement ──────────────────────────────────── */}
       <div className="mt-6 rounded-lg border border-border bg-muted px-6 py-5">
         <p className="text-base font-semibold leading-7 text-foreground">
-          [Brand Name] DS is not a component library you install. It is how you build your
+          EYWorks DS is not a component library you install. It is how you build your
           component library.
         </p>
         <p className="mt-2 leading-7 text-secondary-foreground">
@@ -41,16 +41,16 @@ const DocsPage = async () => {
         </p>
       </div>
 
-      {/* ── About [Brand Name] DS ──────────────────────────────────────────── */}
+      {/* ── About EYWorks DS ────────────────────────────────────── */}
       <h2
-        id="about-eyds"
+        id="about-eyworks-ds"
         className="mt-10 scroll-mt-20 border-b border-border pb-2 text-2xl font-semibold tracking-tight text-foreground"
       >
-        About [Brand Name] DS
+        About EYWorks DS
       </h2>
       <p className="mt-4 leading-7 text-secondary-foreground">
-        [Brand Name] DS ([Brand Name] Design System) is an open-source collection of React +
-        TypeScript components designed and maintained by [Brand Name]. Every
+        EYWorks DS (EYWorks Design System) is an open-source collection of
+        React + TypeScript components designed and maintained by EYWorks. Every
         component is extracted directly from a Figma master file using the Figma
         MCP integration — design tokens, spacing, typography, and color are all
         kept in lockstep with the source of truth in Figma.
@@ -70,12 +70,12 @@ const DocsPage = async () => {
         component in a single sync.
       </p>
       <p className="mt-4 leading-7 text-secondary-foreground">
-        [Brand Name] DS currently ships{" "}
+        EYWorks DS currently ships with{" "}
         <span className="font-medium text-foreground">
-          7 production-ready components
+          production-ready components
         </span>{" "}
-        — Button, Input Field, Toggle, Checkbox, Radio, Upload Input, and
-        Calendar — with full variant coverage, dark mode, and interactive
+        — Button, Input Field, Toggle, Checkbox, Radio, Upload Input, Calendar
+        and more — with full variant coverage, dark mode, and interactive
         documentation.
       </p>
 
@@ -95,15 +95,14 @@ const DocsPage = async () => {
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
         Components live in your codebase, not inside a package. You copy the
-        source file into your project and it becomes yours. This means:
+        source file into your project and it becomes yours.
       </p>
       <ul className="mt-3 space-y-2 text-secondary-foreground">
         <li className="flex gap-2">
           <span className="mt-1 shrink-0 text-primary">→</span>
           <span>
             <span className="font-medium text-foreground">Full transparency.</span>{" "}
-            You see exactly how each component is built, every class, every
-            prop, every edge case.
+            See exactly how each component is built.
           </span>
         </li>
         <li className="flex gap-2">
@@ -112,16 +111,15 @@ const DocsPage = async () => {
             <span className="font-medium text-foreground">
               Zero runtime dependency.
             </span>{" "}
-            No version mismatches, no breaking changes from upstream, no
-            surprise deprecations.
+            No version mismatches or surprise deprecations.
           </span>
         </li>
         <li className="flex gap-2">
           <span className="mt-1 shrink-0 text-primary">→</span>
           <span>
             <span className="font-medium text-foreground">AI-friendly.</span> LLMs
-            can read, understand, and improve your components because the code
-            is right there in your repo.
+            can read, understand and improve components because the code exists
+            directly in your repo.
           </span>
         </li>
       </ul>
@@ -134,36 +132,20 @@ const DocsPage = async () => {
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
         Every design token — color, spacing, typography, border radius — is
-        extracted from the [Brand Name] Figma master file and injected as a CSS
+        extracted from the EYWorks Figma master file and injected as a CSS
         custom property. When the design team updates Figma, running{" "}
         <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
           /sync-design
         </code>{" "}
-        regenerates the tokens. Design and code stay in lockstep without manual
+        regenerates the tokens. Design and code stay aligned without manual
         translation.
       </p>
       <p className="mt-3 leading-7 text-secondary-foreground">
         Tokens are registered in{" "}
         <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
           @theme inline
-        </code>{" "}
-        so Tailwind v4 generates utility classes automatically. A token named{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          --color-brand-primary
-        </code>{" "}
-        becomes{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          bg-primary
         </code>
-        ,{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          text-primary
-        </code>
-        , and{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          border-primary
-        </code>{" "}
-        — no arbitrary values, no style overrides.
+        , allowing Tailwind v4 to automatically generate utility classes.
       </p>
 
       <h3
@@ -173,15 +155,15 @@ const DocsPage = async () => {
         Composition
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
-        Components in [Brand Name] DS are focused primitives, not monolithic configurables.
-        Instead of a single{" "}
+        Components in EYWorks DS are focused primitives, not monolithic
+        configurables. Instead of a single{" "}
         <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
           &lt;Button&gt;
         </code>{" "}
-        with 40 props trying to cover every scenario, [Brand Name] DS gives you a
-        composable interface where variants, sizes, icon slots, and state
-        modifiers are all first-class props — predictable for your team and easy
-        for AI tools to reason about.
+        with dozens of props trying to handle every scenario, EYWorks DS
+        provides composable interfaces where variants, sizes, states and
+        modifiers are predictable for teams and easy for AI tools to reason
+        about.
       </p>
 
       <h3
@@ -192,39 +174,28 @@ const DocsPage = async () => {
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
         Every component ships with carefully designed defaults that look
-        polished out of the box. Variants are managed with{" "}
-        <span className="font-medium text-foreground">
-          CVA (class-variance-authority)
-        </span>
-        , giving every component a consistent, type-safe variant API. Change
-        anything — or nothing. Both options look good.
+        polished out of the box.
       </p>
       <ul className="mt-3 space-y-2 text-secondary-foreground">
         <li className="flex gap-2">
           <span className="mt-1 shrink-0 text-primary">→</span>
           <span>
-            <span className="font-medium text-foreground">
-              Good out of the box.
-            </span>{" "}
-            Clean, minimal aesthetics without extra configuration.
+            <span className="font-medium text-foreground">Good by default.</span>
           </span>
         </li>
         <li className="flex gap-2">
           <span className="mt-1 shrink-0 text-primary">→</span>
           <span>
-            <span className="font-medium text-foreground">Unified design.</span>{" "}
-            Components naturally fit together because they share the same token
-            system.
+            <span className="font-medium text-foreground">Unified design language.</span>
           </span>
         </li>
         <li className="flex gap-2">
           <span className="mt-1 shrink-0 text-primary">→</span>
           <span>
             <span className="font-medium text-foreground">
-              Easily customizable.
+              Easily customizable
             </span>{" "}
-            Override a variant, add a new one, or swap the token — the CVA
-            pattern makes all of it straightforward.
+            using CVA variants and tokens.
           </span>
         </li>
       </ul>
@@ -236,26 +207,26 @@ const DocsPage = async () => {
         Brand Customization
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
-        [Brand Name] DS supports dynamic brand previewing. Every component docs page
-        includes a toolbar with a{" "}
-        <span className="font-medium text-foreground">ColorPicker</span>,{" "}
-        <span className="font-medium text-foreground">FontPicker</span>, and{" "}
-        <span className="font-medium text-foreground">SizeSlider</span> that let
-        you see exactly how a component looks with your brand colors and
-        typography — before writing a single line of code. Dark mode is built in
-        from day one using a{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          .dark
-        </code>{" "}
-        class on{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          &lt;html&gt;
-        </code>{" "}
-        with full token overrides in{" "}
-        <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
-          globals.css
-        </code>
-        .
+        EYWorks DS supports dynamic brand previewing. Documentation pages
+        include tools like:
+      </p>
+      <ul className="mt-3 space-y-2 text-secondary-foreground">
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-primary">→</span>
+          <span className="font-medium text-foreground">Color Picker</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-primary">→</span>
+          <span className="font-medium text-foreground">Font Picker</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-primary">→</span>
+          <span className="font-medium text-foreground">Size Slider</span>
+        </li>
+      </ul>
+      <p className="mt-3 leading-7 text-secondary-foreground">
+        Preview components with your brand styles before writing code. Dark mode
+        is built-in from day one with full token overrides.
       </p>
 
       {/* ── Tech Stack ──────────────────────────────────────────── */}
@@ -314,6 +285,40 @@ const DocsPage = async () => {
         </table>
       </div>
 
+      <h3
+        id="why-this-stack"
+        className="mt-8 scroll-mt-20 text-lg font-semibold text-foreground"
+      >
+        Why this stack?
+      </h3>
+      <p className="mt-2 leading-7 text-secondary-foreground">EYWorks DS follows:</p>
+      <p className="mt-3 rounded-lg border border-border bg-muted px-4 py-3 font-mono text-sm text-foreground">
+        Figma → Tokens → Components → Documentation → Production
+      </p>
+      <p className="mt-4 leading-7 text-secondary-foreground">This enables:</p>
+      <ul className="mt-3 space-y-2 text-secondary-foreground">
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-success-bold">✓</span>
+          <span>Faster iteration</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-success-bold">✓</span>
+          <span>Consistent UI</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-success-bold">✓</span>
+          <span>Strong scalability</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-success-bold">✓</span>
+          <span>Shared design language</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-success-bold">✓</span>
+          <span>AI-readable architecture</span>
+        </li>
+      </ul>
+
       {/* ── Getting Started ─────────────────────────────────────── */}
       <h2
         id="getting-started"
@@ -322,24 +327,37 @@ const DocsPage = async () => {
         Getting Started
       </h2>
       <p className="mt-4 leading-7 text-secondary-foreground">
-        [Brand Name] DS does not require installation. Browse the component you need, copy
-        the source file into your project, and start using it.
+        EYWorks DS does not require installation.
       </p>
+      <ul className="mt-3 space-y-1 text-secondary-foreground">
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-primary">→</span>
+          <span>Browse the component.</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-primary">→</span>
+          <span>Copy it.</span>
+        </li>
+        <li className="flex gap-2">
+          <span className="mt-1 shrink-0 text-primary">→</span>
+          <span>Ship it.</span>
+        </li>
+      </ul>
 
-      <ol className="mt-4 space-y-4">
+      <ol className="mt-6 space-y-4">
         <li className="flex gap-4">
           <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-xs font-bold text-primary-foreground">
             1
           </span>
           <div>
-            <p className="font-medium text-foreground">Browse the component</p>
+            <p className="font-medium text-foreground">Browse Components</p>
             <p className="mt-1 leading-6 text-secondary-foreground">
-              Use the sidebar or search (
+              Use Search (
               <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-xs text-foreground">
                 ⌘K
               </kbd>
-              ) to find the component you need. Each page includes live
-              previews, API reference, and all variants.
+              ) or Sidebar Navigation. Every page includes live previews,
+              variants, documentation, and API references.
             </p>
           </div>
         </li>
@@ -348,7 +366,7 @@ const DocsPage = async () => {
             2
           </span>
           <div>
-            <p className="font-medium text-foreground">Copy the source file</p>
+            <p className="font-medium text-foreground">Copy Source Files</p>
             <p className="mt-1 leading-6 text-secondary-foreground">
               Every component page has an Installation section with the exact
               copy command. Run it to bring the component into your project.
@@ -363,7 +381,7 @@ const DocsPage = async () => {
             3
           </span>
           <div>
-            <p className="font-medium text-foreground">Import and use</p>
+            <p className="font-medium text-foreground">Import &amp; Use</p>
             <p className="mt-1 leading-6 text-secondary-foreground">
               Import the component and start building. The API Reference on each
               docs page covers every prop.
@@ -376,12 +394,12 @@ const DocsPage = async () => {
         </li>
       </ol>
 
-      {/* ── FAQ ─────────────────────────────────────────────────── */}
+      {/* ── FAQs ────────────────────────────────────────────────── */}
       <h2
-        id="faq"
+        id="faqs"
         className="mt-10 scroll-mt-20 border-b border-border pb-2 text-2xl font-semibold tracking-tight text-foreground"
       >
-        FAQ
+        FAQs
       </h2>
 
       <h3
@@ -391,10 +409,10 @@ const DocsPage = async () => {
         Is this a component library I install from npm?
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
-        No. [Brand Name] DS follows the open-code philosophy. There is no npm package to
-        install and no runtime dependency. You copy the component source files
-        directly into your project and they become part of your codebase. You
-        own them fully — read them, modify them, delete them.
+        No. EYWorks DS follows the open-code philosophy. There is no npm package
+        to install and no runtime dependency. You copy the component source
+        files directly into your project and they become part of your codebase.
+        You own them fully — read them, modify them, delete them.
       </p>
 
       <h3
@@ -418,8 +436,8 @@ const DocsPage = async () => {
         How do design tokens stay in sync with Figma?
       </h3>
       <p className="mt-2 leading-7 text-secondary-foreground">
-        [Brand Name] DS uses the Figma MCP integration to extract tokens from the [Brand Name]
-        master Figma file. Running{" "}
+        EYWorks DS uses the Figma MCP integration to extract tokens from the
+        EYWorks master Figma file. Running{" "}
         <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm text-foreground">
           /sync-design &lt;figma-url&gt;
         </code>{" "}
@@ -483,11 +501,14 @@ const DocsPage = async () => {
         before first paint so there is no flash of the wrong theme on reload.
       </p>
 
-      {/* ── Bottom spacer ───────────────────────────────────────── */}
+      {/* ── Bottom signature ────────────────────────────────────── */}
       <div className="mt-16 border-t border-border pt-8">
         <p className="text-sm text-muted-foreground">
-          Built by <span className="font-medium text-secondary-foreground">[Brand Name]</span>.
-          Open source.
+          Built by{" "}
+          <span className="font-medium text-secondary-foreground">
+            Rock Paper Scissors
+          </span>
+          .
         </p>
       </div>
     </div>
