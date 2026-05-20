@@ -1,4 +1,4 @@
-# [Brand Name] Design System
+# EY Design System
 
 A production-grade component library built with React, TypeScript, and Tailwind CSS v4.
 
